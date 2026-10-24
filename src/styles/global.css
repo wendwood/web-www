@@ -85,7 +85,7 @@ ul, ol { margin: 0 0 1em; padding-left: 1.25em; }
 .hero { background: var(--white); padding: 40px 0 48px; overflow: hidden; }
 .hero-grid { display: grid; grid-template-columns: 5fr 7fr; gap: 40px; align-items: center; }
 .hero h1 { color: var(--purple); font-size: clamp(3.2rem, 9vw, 6.5rem); line-height: .95; margin-bottom: .3em; }
-.hero-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: 40% center; border-radius: var(--r-photo); border: 2px solid var(--ink); box-shadow: 14px 14px 0 var(--pool-light); }
+.hero-photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center; border-radius: var(--r-photo); border: 2px solid var(--ink); box-shadow: 14px 14px 0 var(--pool-light); }
 
 .home-hours { display: grid; grid-template-columns: 3fr 2fr; gap: 28px; margin: 56px 0; align-items: start; }
 .visit-note { background: var(--white); border: 2px solid var(--ink); border-radius: var(--r-box); padding: 28px; }
