@@ -2,6 +2,7 @@
 title: Egg My Yard
 date: 2026-04-04
 summary: Wake up to an Easter egg hunt in your own yard, and support the pool.
+page: /egg-my-yard/
 ---
 
 ## Egg My Yard – A Secret Easter Surprise!

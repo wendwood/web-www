@@ -37,11 +37,12 @@ VS Code with the official **Astro** extension highlights mistakes as you type.
 |---|---|
 | Hours, prices, party times, contact email, the banner at the top | `src/data/pool.ts` |
 | Pool rules or privacy text | `src/content/pages/*.md` |
-| Add an event or fundraiser | Copy a file in `src/content/events/` |
+| Add an event or fundraiser | Copy a file in `src/content/events/`; it gets a page at `/events/<file-name>/` |
 | Page layout (home, membership, parties…) | `src/pages/*.astro` |
 | Menu, footer | `src/components/Nav.astro`, `Footer.astro` |
 | Photos | `src/assets/photos/` (Astro resizes them) |
 | Colors, fonts, spacing | `src/styles/global.css` |
+| PDFs | `public/files/YYYY/MM/`, linked as `/files/YYYY/MM/name.pdf`; list kept ones in `docs/inventory.md` |
 | Old-URL redirects | `public/_redirects` and `docs/url-map.csv` |
 
 An `.astro` file is HTML with an optional block between `---` lines at the top where data is loaded. `{pool.email}` drops in a value. We don't use React; if something needs interactivity, ask first.

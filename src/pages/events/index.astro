@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PageLayout from '../layouts/PageLayout.astro';
+import PageLayout from '../../layouts/PageLayout.astro';
 
 const events = (await getCollection('events')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
@@ -8,7 +8,7 @@ const fmt = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric', t
 <PageLayout title="Events" pre="at the" description="Wendwood Pool events and fundraisers.">
   <div class="panel"><ul>
     {events.map((e) => (
-      <li><a href={`/${e.id}/`}>{e.data.title}</a> ({fmt.format(e.data.date)}): {e.data.summary}</li>
+      <li><a href={e.data.page ?? `/events/${e.id}/`}>{e.data.title}</a> ({fmt.format(e.data.date)}): {e.data.summary}</li>
     ))}
   </ul></div>
 </PageLayout>

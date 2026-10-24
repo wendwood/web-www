@@ -117,17 +117,34 @@
 /product/pawsome-cream-delight /events/ 301
 /product/swim-team-2/ https://www.wendwoodwahoos.com/ 301
 /product/swim-team-2 https://www.wendwoodwahoos.com/ 301
+/product / 301
+/product/ / 301
 /product/* / 301
+/product-category / 301
+/product-category/ / 301
 /product-category/* / 301
+/shop / 301
+/shop/ / 301
 /shop/* / 301
+/my-account / 301
+/my-account/ / 301
 /my-account/* / 301
 
 # --- WordPress plumbing ---
+/feed / 301
+/feed/ / 301
 /feed/* / 301
+/wp-admin / 301
+/wp-admin/ / 301
 /wp-admin/* / 301
 /wp-login.php / 301
 /wp-login.php/ / 301
 /calendar/action~* /calendar/ 301
 
 # --- Uploaded files: PDFs we keep live under /files/YYYY/MM/<name> (same names as before) ---
+# Superseded by /pool-rules/ and lists a volunteer's personal contacts, so not republished.
+/wp-content/uploads/2025/04/Wendwood-Association-Rules-2025.pdf /pool-rules/ 301
+/wp-content/uploads/2025/04/Wendwood-Association-Rules-2025.pdf/ /pool-rules/ 301
+/wp-content/uploads / 301
+/wp-content/uploads/ / 301
 /wp-content/uploads/* /files/:splat 301

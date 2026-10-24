@@ -23,12 +23,19 @@ Dropped from the old site: the WooCommerce shop, the dead Google Universal Analy
 
 ## Documents (PDFs)
 
-38 PDFs, most from 2019–2024. Current ones to keep at their old paths under `public/files/`:
+38 PDFs, most from 2019–2024. Every PDF path listed here must either exist under `public/files/` or have its own redirect in `public/_redirects`; `npm test` checks this.
+
+Kept at their old paths under `public/files/`:
 
 - `2025/04/Wendwood-Association-Application-2025.pdf`
-- `2025/04/Wendwood-Association-Rules-2025.pdf`
 - `2024/06/Wendwood-Association-2024-Pool-Rental-Contract.docx.pdf`
 - `2019/11/Wendwood-By-Laws-2019-FINAL-changes.pdf`
+
+Redirected instead of republished:
+
+- `2025/04/Wendwood-Association-Rules-2025.pdf` goes to `/pool-rules/`. It's superseded by that page and lists a volunteer's personal email and phone.
+
+Any other old upload URL redirects to `/files/...` and 404s.
 
 The board decides whether older ones (bylaws, budgets) stay public.
 

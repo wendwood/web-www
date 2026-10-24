@@ -21,6 +21,8 @@ const events = defineCollection({
     summary: z.string(),
     // Square payment link, added by the treasurer when the fundraiser opens.
     paymentLink: z.url().optional(),
+    // Set when the event has its own page (e.g. an old URL to keep); otherwise it gets /events/<file-name>/.
+    page: z.string().startsWith('/').endsWith('/').optional(),
   }),
 });
 
