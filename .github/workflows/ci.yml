@@ -9,9 +9,6 @@ on:
 
 permissions:
   contents: read
-  deployments: write
-  # Post the preview link on the PR.
-  pull-requests: write
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -46,6 +43,12 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    outputs:
+      alias_url: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
+      commit_url: ${{ steps.deploy.outputs.deployment-url }}
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
@@ -70,13 +73,20 @@ jobs:
           command: pages deploy dist --project-name=wendwood-www --branch=${{ github.head_ref || github.ref_name }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
 
+  # Only this job can write to the PR, and it never checks out or runs branch code.
+  comment:
+    needs: build
+    if: github.event_name == 'pull_request' && needs.build.outputs.alias_url != ''
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
       # One comment per PR, edited on each push. Values go through env, never inline in the script.
       - name: Comment preview link on the PR
-        if: github.event_name == 'pull_request' && env.CLOUDFLARE_API_TOKEN != ''
         env:
           GH_TOKEN: ${{ github.token }}
-          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
-          COMMIT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          ALIAS_URL: ${{ needs.build.outputs.alias_url }}
+          COMMIT_URL: ${{ needs.build.outputs.commit_url }}
           PR: ${{ github.event.pull_request.number }}
           SHA: ${{ github.event.pull_request.head.sha }}
         run: |

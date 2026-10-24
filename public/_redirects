@@ -142,7 +142,11 @@
 /calendar/action~* /calendar/ 301
 
 # --- Uploaded files: PDFs we keep live under /files/YYYY/MM/<name> (same names as before) ---
-# Superseded by /pool-rules/ and lists a volunteer's personal contacts, so not republished.
+# Only the bylaws are republished; current documents point at the pages that replaced them.
+/wp-content/uploads/2025/04/Wendwood-Association-Application-2025.pdf /membership/ 301
+/wp-content/uploads/2025/04/Wendwood-Association-Application-2025.pdf/ /membership/ 301
+/wp-content/uploads/2024/06/Wendwood-Association-2024-Pool-Rental-Contract.docx.pdf /parties/ 301
+/wp-content/uploads/2024/06/Wendwood-Association-2024-Pool-Rental-Contract.docx.pdf/ /parties/ 301
 /wp-content/uploads/2025/04/Wendwood-Association-Rules-2025.pdf /pool-rules/ 301
 /wp-content/uploads/2025/04/Wendwood-Association-Rules-2025.pdf/ /pool-rules/ 301
 /wp-content/uploads / 301
