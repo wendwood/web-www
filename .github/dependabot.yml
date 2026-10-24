@@ -4,6 +4,10 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    ignore:
+      # @astrojs/check doesn't support TypeScript 7 yet; 7.1's PR shows whether it does (#26).
+      - dependency-name: typescript
+        versions: ["7.0.x"]
   - package-ecosystem: github-actions
     directory: /
     schedule:
