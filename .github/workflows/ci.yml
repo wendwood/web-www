@@ -10,6 +10,8 @@ on:
 permissions:
   contents: read
   deployments: write
+  # Post the preview link on the PR.
+  pull-requests: write
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -59,6 +61,7 @@ jobs:
 
       # Skipped until the Pages project and secrets exist, and on PRs from forks.
       - name: Deploy to Cloudflare Pages
+        id: deploy
         if: env.CLOUDFLARE_API_TOKEN != ''
         uses: cloudflare/wrangler-action@953926a2e2182532811c01a25e53647d93bf07c0 # v4.1.3
         with:
@@ -66,3 +69,23 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=wendwood-www --branch=${{ github.head_ref || github.ref_name }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      # One comment per PR, edited on each push. Values go through env, never inline in the script.
+      - name: Comment preview link on the PR
+        if: github.event_name == 'pull_request' && env.CLOUDFLARE_API_TOKEN != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ALIAS_URL: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
+          COMMIT_URL: ${{ steps.deploy.outputs.deployment-url }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          MARKER='<!-- pages-preview -->'
+          BODY=$(printf '%s\n**Preview:** %s\n\nThis commit (%s): %s\n' "$MARKER" "$ALIAS_URL" "${SHA:0:7}" "$COMMIT_URL")
+          ID=$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR/comments" --paginate \
+            --jq ".[] | select(.user.login == \"github-actions[bot]\" and (.body | startswith(\"$MARKER\"))) | .id" | head -1)
+          if [ -n "$ID" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$ID" -f body="$BODY" >/dev/null
+          else
+            gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" --body "$BODY"
+          fi
