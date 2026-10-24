@@ -6,7 +6,7 @@ import partyPhoto from '../assets/photos/home-party.jpg';
 
 const party = pool.parties;
 ---
-<PageLayout title="Parties" pre="at the" white description="Rent the Wendwood Pool for a private party. Members only.">
+<PageLayout title="Parties" pre="at the" white description={`Members can rent Wendwood Pool in Newport News for a private party: $${pool.parties.pricePerHour} an hour with ${pool.parties.lifeguards} lifeguards and up to ${pool.parties.maxGuests} guests.`}>
   <p class="lead">Adding water to any celebration makes it more fun! Host your summer party at the Wendwood Pool.</p>
 
   <div class="split">

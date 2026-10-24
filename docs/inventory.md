@@ -19,7 +19,6 @@ Dropped from the old site: the WooCommerce shop, the dead Google Universal Analy
 - **Pool hours.** The membership and rules pages listed different 2026 hours and season start dates. The site uses the membership page, which was edited most recently.
 - **Contacts.** The old site listed volunteers' personal emails and cell numbers. The new site uses the pool's email until the board picks role addresses.
 
-- **Pool Rules title.** The old rules page's banner title reads "Membership" (it reuses the membership header). The new page matches it; change `heading` in `src/pages/pool-rules.astro` to fix.
 
 ## Documents (PDFs)
 

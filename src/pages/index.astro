@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BusinessInfo from '../components/BusinessInfo.astro';
 import Nav from '../components/Nav.astro';
 import { pool } from '../data/pool';
 import hero from '../assets/photos/hero-home.jpg';
@@ -12,7 +13,8 @@ import float from '../assets/photos/band-float.jpg';
 
 const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 510px' };
 ---
-<BaseLayout title={pool.name} description="A neighborhood pool in Newport News, VA: memberships, pool parties, and home of the Wendwood Wahoos swim team.">
+<BaseLayout title={`${pool.name} | Neighborhood Pool in Newport News, VA`} description="Wendwood Pool is a members-only neighborhood pool in Newport News, VA, with a splash pad, pool parties, and the Wendwood Wahoos swim team.">
+  <BusinessInfo slot="head" />
   <header slot="header" class="hero">
     <Image src={hero} alt="" widths={[800, 1600, 2200]} sizes="100vw" loading="eager" />
     <div class="hero-top">
@@ -56,7 +58,7 @@ const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 510px' };
       <section class="panel">
         <h2>Book a Pool Party!</h2>
         <p>Want to make a splash for your next event? Book a party at the Wendwood Pool! Use our 2500 sq. ft. pool, deck and accompanying grounds to celebrate.</p>
-        <a class="button" href="/parties/">Click here</a>
+        <a class="button" href="/parties/">See party details</a>
       </section>
     </div>
 
