@@ -4,7 +4,7 @@ import PageLayout from '../layouts/PageLayout.astro';
 import { pool, address } from '../data/pool';
 import entrance from '../assets/photos/contact-entrance.jpg';
 ---
-<PageLayout title="Contact" heading="Contact Us" header="bar" white description="How to reach the Wendwood Pool.">
+<PageLayout title="Contact" heading="Contact Us" header="bar" white description={`Contact Wendwood Pool in Newport News, VA, by email or Facebook, with directions to the pool at ${pool.addressLines[0]}`}>
   <h2>We Want to Hear from You!</h2>
   <div class="split contact-row">
     <div>

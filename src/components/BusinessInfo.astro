@@ -1,0 +1,30 @@
+---
+// Structured data (schema.org JSON-LD) so search engines can show the pool in local results.
+// It's data, not script, so the CSP doesn't apply. The pool phone is left out: it's for emergencies only.
+import { pool } from '../data/pool';
+
+const [, locality, region, postalCode] = pool.addressLines[1].match(/^(.+), ([A-Z]{2}) (\d{5})$/) ?? [];
+if (!postalCode) throw new Error('pool.addressLines[1] should look like "City, ST 12345"');
+
+const data = {
+  '@context': 'https://schema.org',
+  '@type': 'SportsClub',
+  name: pool.name,
+  url: Astro.site?.href,
+  logo: new URL('/logo.png', Astro.site).href,
+  image: new URL('/apple-touch-icon.png', Astro.site).href,
+  email: pool.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: pool.addressLines[0],
+    addressLocality: locality,
+    addressRegion: region,
+    postalCode,
+    addressCountry: 'US',
+  },
+  hasMap: pool.mapUrl,
+  sameAs: [pool.facebook],
+  parentOrganization: { '@type': 'Organization', name: pool.association },
+};
+---
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />

@@ -2,6 +2,8 @@
 import PageLayout from '../layouts/PageLayout.astro';
 import { pool } from '../data/pool';
 ---
-<PageLayout title="Calendar" pre="for the" description="Wendwood Pool events, parties, and closures.">
+<PageLayout title="Calendar" pre="for the" description="The Wendwood Pool calendar: Association events, private parties, and pool closures in Newport News, VA. Check it before you head to the pool.">
+  <p>Association events, private parties, and pool closures. Check here before you head to the pool. For details on upcoming fundraisers, see <a href="/events/">Events</a>; to host your own, see <a href="/parties/">Parties</a>.</p>
   <iframe class="calendar-embed" src={pool.calendarEmbed} title="Wendwood Pool calendar" loading="lazy"></iframe>
+  <p><a href={pool.calendarEmbed}>Open the calendar in Google Calendar</a></p>
 </PageLayout>
