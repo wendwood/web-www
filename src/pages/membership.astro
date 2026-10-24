@@ -12,7 +12,7 @@ const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 524px' };
 <PageLayout title="Membership" pre="at the" description={`${pool.season} Wendwood Pool memberships, prices, and hours.`}>
   <div class="split narrow-gap">
     <p class="intro-lg">The Wendwood Pool has so much to offer our members. Free WiFi allows parents to telework as the kids splash and play while our American Red Cross certified lifeguards ensure their safety in the pool. Sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn! Littles can safely play in our completely fenced-in splash pool while parents supervise nearby.</p>
-    <Image src={basketball} alt="Pool basketball" {...square} />
+    <Image src={basketball} alt="Pool basketball" {...square} loading="eager" />
   </div>
 
   <div class="split narrow-gap">

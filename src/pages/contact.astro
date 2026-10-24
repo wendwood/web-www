@@ -14,6 +14,6 @@ import entrance from '../assets/photos/contact-entrance.jpg';
       <p><strong>Pool phone:</strong> {pool.poolPhone} (emergency use only)</p>
       <a class="button purple" href={`mailto:${pool.email}`}>Email us</a>
     </div>
-    <Image src={entrance} alt="The pool entrance" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 510px" />
+    <Image src={entrance} alt="The pool entrance" loading="eager" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 510px" />
   </div>
 </PageLayout>
