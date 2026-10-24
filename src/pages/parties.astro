@@ -1,0 +1,28 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Notice from '../components/Notice.astro';
+import { pool } from '../data/pool';
+
+const party = pool.parties;
+---
+<PageLayout title="Parties" kicker="At the Wendwood Pool" description="Rent the Wendwood Pool for a private party. Members only.">
+  {!party.bookingOpen && (
+    <Notice>Online party bookings are unavailable right now. They'll reopen before the pool season starts. Questions? Email <a href={`mailto:${pool.email}`}>{pool.email}</a>.</Notice>
+  )}
+
+  <p>Adding water to any celebration makes it more fun! Host your summer party at the Wendwood Pool.</p>
+  <p><strong>Because of our insurance, the pool can only be rented to members for private parties.</strong></p>
+
+  <h2>Party times</h2>
+  <ul>
+    {party.slots.map((s) => <li><strong>{s.days}:</strong> {s.time}</li>)}
+  </ul>
+
+  <h2>What's included</h2>
+  <ul>
+    <li>${party.pricePerHour} per hour (members only)</li>
+    <li>{party.lifeguards} lifeguards</li>
+    <li>Up to {party.maxGuests} guests</li>
+  </ul>
+  <p>A signed rental agreement and a ${party.deposit} non-refundable deposit are required to hold your date.</p>
+</PageLayout>

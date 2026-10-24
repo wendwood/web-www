@@ -1,0 +1,39 @@
+---
+import { getEntry, render } from 'astro:content';
+import PageLayout from '../layouts/PageLayout.astro';
+import Hours from '../components/Hours.astro';
+import { pool } from '../data/pool';
+
+const entry = await getEntry('pages', 'pool-rules');
+if (!entry) throw new Error('src/content/pages/pool-rules.md is missing');
+const { Content } = await render(entry);
+const p = pool.prices;
+---
+<PageLayout title={entry.data.title} kicker={`${pool.season} season`} description={entry.data.description}>
+  <h2>Types of memberships</h2>
+  <ul>
+    <li><strong>Household:</strong> ${p.household.volunteer} with {pool.volunteerHours} volunteer hours, or ${p.household.noVolunteer} without. For households of at least 2 people.</li>
+    <li><strong>Single/Senior:</strong> ${p.single.volunteer} with {pool.volunteerHours} volunteer hours, or ${p.single.noVolunteer} without. For a household of 1 person, or 2 if one is 60 or older by June 30.</li>
+    <li><strong>I Support Wendwood:</strong> ${p.supportWendwood}. For households not interested in pool membership.</li>
+  </ul>
+  <p>Pool memberships include use of the pool all season, 5 guest passes, and participation in all Association-sponsored activities.</p>
+
+  <h2>Add-ons, fees, and passes</h2>
+  <ul>
+    <li><strong>Guest add-ons:</strong> ${p.guestAddOn} each. Lets a member bring a different guest any time: a friend, babysitter, or neighbor.</li>
+    <li><strong>Local guests:</strong> ${p.localGuestDay} per guest per day, for guests living 1 to 50 miles from the pool. Neighbors within 1 mile don't qualify as local guests but can be a guest add-on.</li>
+    <li><strong>Non-local guests:</strong> free, for guests from more than 50 miles away.</li>
+    <li><strong>Guest passes:</strong> ${p.guestPass} each or ${p.guestPass12} for 12, at the snack shack or online.</li>
+  </ul>
+  <p>All guests must be accompanied by a current member.</p>
+
+  <h2>Pool season and hours</h2>
+  <Hours />
+
+  <h2>Pool parties</h2>
+  <p>Members can rent the pool for ${pool.parties.pricePerHour}/hour, including {pool.parties.lifeguards} lifeguards and up to {pool.parties.maxGuests} guests. See <a href="/parties/">Parties</a>.</p>
+
+  <p><strong>Pool phone:</strong> {pool.poolPhone} (emergencies only)</p>
+
+  <Content />
+</PageLayout>

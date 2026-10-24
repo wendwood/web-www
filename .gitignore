@@ -1,0 +1,29 @@
+# Build output and dependencies
+dist/
+node_modules/
+.astro/
+
+# Local-only planning material, tool settings and scratch files
+_local/
+.claude/
+.DS_Store
+
+# Runtime secrets / config, never commit
+.env
+*.env
+.env.*
+!*.env.example
+!.env.example
+secrets/
+.dev.vars
+.wrangler/
+
+# Old-site backups and data exports hold member and customer data
+*.sql
+*.sql.gz
+*.wpress
+*.zip
+*.tar.gz
+*.xlsx
+backup*/
+exports/

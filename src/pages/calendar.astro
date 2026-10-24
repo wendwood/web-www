@@ -1,0 +1,7 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pool } from '../data/pool';
+---
+<PageLayout title="Calendar" kicker="For the Wendwood Pool" description="Wendwood Pool events, parties, and closures.">
+  <iframe class="embed" src={pool.calendarEmbed} title="Wendwood Pool calendar" loading="lazy"></iframe>
+</PageLayout>

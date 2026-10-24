@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { pool } from '../data/pool';
+---
+<BaseLayout title={pool.name} description="A neighborhood pool in Newport News, VA: memberships, pool parties, and home of the Wendwood Wahoos swim team.">
+  <header class="page-hero">
+    <div class="wrap">
+      <p class="kicker">Newport News, Virginia</p>
+      <h1>Welcome to the Wendwood Pool</h1>
+      <p>A shady oasis tucked in a quiet neighborhood.</p>
+      <a class="button" href="/membership/">Join us</a>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <div class="cards">
+      <section class="card">
+        <h3>Join our pool</h3>
+        <p>Sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn. Free Wi-Fi lets you work while the kids play, and Red Cross certified lifeguards are always on duty.</p>
+        <a href="/membership/">Memberships</a>
+      </section>
+      <section class="card">
+        <h3>Swim on our team</h3>
+        <p>The Wendwood Wahoos are small but mighty. We work hard, learn proper technique, cheer on our teammates, and have fun.</p>
+        <a href={pool.swimTeam}>Wahoos website</a>
+      </section>
+      <section class="card">
+        <h3>Rent the pool</h3>
+        <p>Make a splash at your next event. Members can book the pool, deck, and grounds for a private party.</p>
+        <a href="/parties/">Pool parties</a>
+      </section>
+      <section class="card">
+        <h3>Day passes</h3>
+        <p>Our pool insurance covers members and their guests only, so we can't offer day passes.</p>
+      </section>
+    </div>
+
+    <h2>About the pool</h2>
+    <p>The Wendwood Pool is a 4-lane, 25-yard neighborhood pool and home to the Wendwood Wahoos, our competitive swim team. One third of the pool is 3 feet deep or less, so young swimmers have plenty of room to play. The middle is a little deeper, perfect for pool games, and the deep end has a diving board. The deck has umbrella tables and plenty of reclining chairs, and a separate, fenced splash pad lets the littlest swimmers play safely.</p>
+
+    <h2>Learn to swim</h2>
+    <p>We hope to offer swim lessons and will post details here when they're available.</p>
+  </div>
+</BaseLayout>

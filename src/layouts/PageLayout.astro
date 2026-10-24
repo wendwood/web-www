@@ -1,0 +1,21 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  kicker?: string;
+}
+const { title, description, kicker } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <header class="page-hero">
+    <div class="wrap">
+      {kicker && <p class="kicker">{kicker}</p>}
+      <h1>{title}</h1>
+    </div>
+  </header>
+  <div class="wrap page-body">
+    <slot />
+  </div>
+</BaseLayout>

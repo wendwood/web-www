@@ -1,0 +1,39 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import Hours from '../components/Hours.astro';
+import { pool } from '../data/pool';
+
+const p = pool.prices;
+---
+<PageLayout title="Membership" kicker="At the Wendwood Pool" description={`${pool.season} Wendwood Pool memberships, prices, and hours.`}>
+  <p>Free Wi-Fi lets parents telework while the kids splash and play under the watch of Red Cross certified lifeguards. Sunbathe, read in the shade, or float on a giant unicorn. Little ones can play in our fully fenced splash pool while parents supervise nearby.</p>
+
+  <h2>{pool.season} memberships</h2>
+  <div class="prices">
+    <section class="price">
+      <h3>Household</h3>
+      <div class="amount">${p.household.volunteer}</div>
+      <p>with {pool.volunteerHours} volunteer hours, or ${p.household.noVolunteer} without</p>
+    </section>
+    <section class="price">
+      <h3>Single / Senior</h3>
+      <div class="amount">${p.single.volunteer}</div>
+      <p>with {pool.volunteerHours} volunteer hours, or ${p.single.noVolunteer} without</p>
+    </section>
+    <section class="price">
+      <h3>I Support Wendwood</h3>
+      <div class="amount">${p.supportWendwood}</div>
+      <p>No pool privileges. Helps keep Wendwood beautiful and includes Association-sponsored events.</p>
+    </section>
+  </div>
+
+  <p>Pool memberships include use of the pool all season, participation in all Association-sponsored activities, and free Wi-Fi at the pool. New to the neighborhood since April 1 of last year? Get ${p.newNeighborDiscount} off your membership.</p>
+  <p>
+    <a class="button" href={pool.membershipSignup}>Sign up online</a>
+    <a class="button secondary" href="/pool-rules/">Pool rules</a>
+  </p>
+  <p class="fine">Paying by cash or check? Fill out the online form and choose "Check" as the payment option.</p>
+
+  <h2>Hours</h2>
+  <Hours />
+</PageLayout>

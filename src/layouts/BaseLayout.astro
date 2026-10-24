@@ -1,0 +1,38 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Notice from '../components/Notice.astro';
+import { pool } from '../data/pool';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props;
+const fullTitle = title === pool.name ? title : `${title} | ${pool.name}`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400;900&family=Montserrat:wght@400;600;700&display=swap" />
+    <script is:inline async defer src="https://citadel.dadalorian.com/stardust" data-website-id="72dd6bc7-e75e-461f-b26c-2f8dbbb873c1"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header />
+    {pool.notice && <Notice>{pool.notice}</Notice>}
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

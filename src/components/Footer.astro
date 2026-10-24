@@ -1,0 +1,15 @@
+---
+import { pool } from '../data/pool';
+---
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <strong>{pool.name}</strong><br />
+      <a href={pool.mapUrl}>{pool.address}</a>
+    </div>
+    <div>
+      <a href={`mailto:${pool.email}`}>{pool.email}</a><br />
+      <a href={pool.facebook}>Facebook</a> · <a href="/privacy/">Privacy</a> · <a href="/events/">Events</a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pool } from '../data/pool';
+---
+<PageLayout title="Contact Us" kicker="We want to hear from you" description="How to reach the Wendwood Pool.">
+  <ul>
+    <li><strong>Email:</strong> <a href={`mailto:${pool.email}`}>{pool.email}</a></li>
+    <li><strong>Facebook:</strong> <a href={pool.facebook}>facebook.com/wendwood.pool</a></li>
+    <li><strong>Address:</strong> <a href={pool.mapUrl}>{pool.address}</a></li>
+    <li><strong>Pool phone:</strong> {pool.poolPhone} (emergencies only, during pool hours)</li>
+  </ul>
+</PageLayout>

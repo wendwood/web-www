@@ -1,0 +1,12 @@
+---
+import { pool } from '../data/pool';
+---
+<table class="hours">
+  <caption>Anticipated {pool.season} pool hours</caption>
+  <tbody>
+    {pool.hours.map((h) => (
+      <tr><th scope="row">{h.days}</th><td>{h.time}</td></tr>
+    ))}
+  </tbody>
+</table>
+<p class="fine">Hours may change because of swim meets, events, attendance, and staffing.</p>
