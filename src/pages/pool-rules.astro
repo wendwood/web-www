@@ -9,7 +9,9 @@ if (!entry) throw new Error('src/content/pages/pool-rules.md is missing');
 const { Content } = await render(entry);
 const p = pool.prices;
 ---
-<PageLayout title={entry.data.title} kicker={`${pool.season} season`} description={entry.data.description}>
+<PageLayout title={entry.data.title} pre="at the" description={entry.data.description}>
+  <div class="panel">
+  <h2 class="label">{pool.season} Pool Information &amp; Rules</h2>
   <h2>Types of memberships</h2>
   <ul>
     <li><strong>Household:</strong> ${p.household.volunteer} with {pool.volunteerHours} volunteer hours, or ${p.household.noVolunteer} without. For households of at least 2 people.</li>
@@ -36,4 +38,5 @@ const p = pool.prices;
   <p><strong>Pool phone:</strong> {pool.poolPhone} (emergencies only)</p>
 
   <Content />
+  </div>
 </PageLayout>

@@ -1,39 +1,59 @@
 ---
+import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
-import Hours from '../components/Hours.astro';
 import { pool } from '../data/pool';
+import basketball from '../assets/photos/membership-basketball.jpg';
+import drink from '../assets/photos/membership-drink.jpg';
 
 const p = pool.prices;
+const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 510px' };
 ---
-<PageLayout title="Membership" kicker="At the Wendwood Pool" description={`${pool.season} Wendwood Pool memberships, prices, and hours.`}>
-  <p>Free Wi-Fi lets parents telework while the kids splash and play under the watch of Red Cross certified lifeguards. Sunbathe, read in the shade, or float on a giant unicorn. Little ones can play in our fully fenced splash pool while parents supervise nearby.</p>
+<PageLayout title="Membership" pre="at the" description={`${pool.season} Wendwood Pool memberships, prices, and hours.`}>
+  <div class="split">
+    <div>
+      <p>The Wendwood Pool has so much to offer our members. Free Wi-Fi allows parents to telework as the kids splash and play while our American Red Cross certified lifeguards keep them safe. Sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn! Littles can safely play in our completely fenced-in splash pool while parents supervise nearby.</p>
+    </div>
+    <Image src={basketball} alt="Pool basketball" {...square} />
+  </div>
 
-  <h2>{pool.season} memberships</h2>
-  <div class="prices">
-    <section class="price">
+  <div class="split">
+    <Image src={drink} alt="A treat from the snack shack" {...square} />
+    <section class="panel">
+      <h2 class="label">{pool.season} Memberships</h2>
       <h3>Household</h3>
-      <div class="amount">${p.household.volunteer}</div>
-      <p>with {pool.volunteerHours} volunteer hours, or ${p.household.noVolunteer} without</p>
-    </section>
-    <section class="price">
-      <h3>Single / Senior</h3>
-      <div class="amount">${p.single.volunteer}</div>
-      <p>with {pool.volunteerHours} volunteer hours, or ${p.single.noVolunteer} without</p>
-    </section>
-    <section class="price">
-      <h3>I Support Wendwood</h3>
-      <div class="amount">${p.supportWendwood}</div>
-      <p>No pool privileges. Helps keep Wendwood beautiful and includes Association-sponsored events.</p>
+      <p>+{pool.volunteerHours} volunteer hours: ${p.household.volunteer}<br />no volunteer hours: ${p.household.noVolunteer}</p>
+      <h3>Single/Senior</h3>
+      <p>+{pool.volunteerHours} volunteer hours: ${p.single.volunteer}<br />no volunteer hours: ${p.single.noVolunteer}</p>
+      <ul>
+        <li>Includes use of the pool all season</li>
+        <li>Participation in all Association-sponsored activities</li>
+        <li>FREE Wi-Fi at the pool!</li>
+      </ul>
+      <p><a class="button pink" href="/pool-rules/">{pool.season} Pool rules</a></p>
+      <p class="callout">New to the neighborhood? Get ${p.newNeighborDiscount} off your membership fee!</p>
+      <a class="button pink" href={pool.membershipSignup}>Sign up today</a>
     </section>
   </div>
 
-  <p>Pool memberships include use of the pool all season, participation in all Association-sponsored activities, and free Wi-Fi at the pool. New to the neighborhood since April 1 of last year? Get ${p.newNeighborDiscount} off your membership.</p>
-  <p>
-    <a class="button" href={pool.membershipSignup}>Sign up online</a>
-    <a class="button secondary" href="/pool-rules/">Pool rules</a>
-  </p>
-  <p class="fine">Paying by cash or check? Fill out the online form and choose "Check" as the payment option.</p>
+  <section class="strip orange strip-row">
+    <div>
+      <h3>I SUPPORT WENDWOOD MEMBERSHIP</h3>
+      <p>Want to help keep Wendwood beautiful and take part in Association-sponsored events, but don't need pool privileges? Support us for ${p.supportWendwood}.</p>
+    </div>
+    <a class="button white" href={pool.membershipSignup}>Join us today</a>
+  </section>
 
-  <h2>Hours</h2>
-  <Hours />
+  <section class="strip magenta">
+    <h3 class="center">Anticipated {pool.season} Pool Hours</h3>
+    <div class="hours-cols">
+      {pool.hours.map((h) => <div>{h.days}: {h.time}</div>)}
+    </div>
+    <p class="fine">Hours may change because of swim team events, attendance, scheduled parties, and staffing. We always aim to be open as many hours as we can.</p>
+  </section>
+
+  <section class="section-blue strip">
+    <h2>Want to pay with cash or check?</h2>
+    <p>Fill out the online form and choose "Check" as the payment option.</p>
+    <a class="button white" href={pool.membershipSignup}>Online form (preferred)</a>
+  </section>
 </PageLayout>

@@ -39,7 +39,8 @@ VS Code with the official **Astro** extension highlights mistakes as you type.
 | Pool rules or privacy text | `src/content/pages/*.md` |
 | Add an event or fundraiser | Copy a file in `src/content/events/` |
 | Page layout (home, membership, parties…) | `src/pages/*.astro` |
-| Header, footer | `src/components/Header.astro`, `Footer.astro` |
+| Menu, footer | `src/components/Nav.astro`, `Footer.astro` |
+| Photos | `src/assets/photos/` (Astro resizes them) |
 | Colors, fonts, spacing | `src/styles/global.css` |
 | Old-URL redirects | `public/_redirects` and `docs/url-map.csv` |
 
@@ -53,7 +54,7 @@ This repository is **public**. Anyone can read every file and every commit.
 
 - **Never commit** passwords or keys, member or order data, WordPress backups, or spreadsheets of people. CI blocks the common file types, but don't rely on it.
 - **Contacts are role addresses only** (the pool's email and phone). Don't publish a volunteer's personal email or cell number.
-- **Photos of children** need the board to confirm parent permission first, and file names never include a child's name.
+- **Photos:** use ones the pool already publishes or the board approves. Phone photos contain GPS location, so ask the maintainer to strip metadata before adding one. File names never include a person's name.
 - **Hours and prices go in `pool.ts` only**, so pages can't disagree.
 - **Keep PRs to one topic** and say what changed and why.
 - Changes to `public/_headers`, `public/_redirects`, `.github/` or `package.json` need the maintainer's review. Content and design PRs can be merged by the webmaster once the preview looks right and the checks are green.

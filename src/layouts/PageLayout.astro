@@ -1,19 +1,23 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import noodles from '../assets/photos/banner-noodles.jpg';
 
 interface Props {
   title: string;
   description: string;
-  kicker?: string;
+  // Small words above the "wendwood pool" script, e.g. "at the". Omit to hide the script line.
+  pre?: string;
 }
-const { title, description, kicker } = Astro.props;
+const { title, description, pre } = Astro.props;
 ---
 <BaseLayout title={title} description={description}>
-  <header class="page-hero">
-    <div class="wrap">
-      {kicker && <p class="kicker">{kicker}</p>}
-      <h1>{title}</h1>
-    </div>
+  <div slot="header" class="navbar"><Nav /></div>
+  <div class="banner"><Image src={noodles} alt="" widths={[800, 1600, 2200]} sizes="100vw" loading="eager" /></div>
+  <header class="title-box">
+    <h1>{title}</h1>
+    {pre && <><span class="pre">{pre}</span><span class="script">wendwood pool</span></>}
   </header>
   <div class="wrap page-body">
     <slot />

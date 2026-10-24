@@ -1,5 +1,5 @@
 ---
-title: Pool Information and Rules
+title: Pool Rules
 description: Wendwood Pool membership types, guest fees, hours, and pool rules.
 updated: 2026-04-09
 ---

@@ -7,9 +7,9 @@ const entry = await getEntry('events', 'egg-my-yard');
 if (!entry) throw new Error('src/content/events/egg-my-yard.md is missing');
 const { Content } = await render(entry);
 ---
-<PageLayout title={entry.data.title} kicker="Support the Wendwood Pool" description={entry.data.summary}>
-  <Content />
+<PageLayout title={entry.data.title} pre="support the" description={entry.data.summary}>
+  <div class="panel"><Content />
   {entry.data.paymentLink
     ? <p><a class="button" href={entry.data.paymentLink}>Order now</a></p>
     : <p><strong>Orders aren't open right now.</strong> Questions? Email <a href={`mailto:${pool.email}`}>{pool.email}</a>.</p>}
-</PageLayout>
+</div></PageLayout>

@@ -8,6 +8,6 @@ const { Content } = await render(entry);
 const fmt = new Intl.DateTimeFormat('en-US', { dateStyle: 'long', timeZone: 'UTC' });
 ---
 <PageLayout title={entry.data.title} description={entry.data.description}>
-  <p class="fine">Last updated {fmt.format(entry.data.updated)}</p>
-  <Content />
+  <div class="panel"><p class="fine">Last updated {fmt.format(entry.data.updated)}</p>
+  <Content /></div>
 </PageLayout>
