@@ -12,6 +12,7 @@ You need Node.js 24 or later.
 npm ci --ignore-scripts
 npm run dev        # http://localhost:4321, reloads as you edit
 npm test           # checks every old URL still works
+npm run check      # type-checks pages, e.g. a misspelled field from pool.ts
 npm run build      # builds the site into dist/
 ```
 
