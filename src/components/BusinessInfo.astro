@@ -1,10 +1,15 @@
 ---
 // Structured data (schema.org JSON-LD) so search engines can show the pool in local results.
-// It's data, not script, so the CSP doesn't apply. The pool phone is left out: it's for emergencies only.
+// It's data, not script, so the CSP doesn't apply; `<` is escaped so no value can end the block early. The pool phone is left out: it's for emergencies only.
+import { getImage } from 'astro:assets';
 import { pool } from '../data/pool';
+import sharePhoto from '../assets/photos/hero-home.jpg';
 
 const [, locality, region, postalCode] = pool.addressLines[1].match(/^(.+), ([A-Z]{2}) (\d{5})$/) ?? [];
 if (!postalCode) throw new Error('pool.addressLines[1] should look like "City, ST 12345"');
+
+// Same options as the share image in BaseLayout, so the build reuses one file.
+const photo = await getImage({ src: sharePhoto, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
 
 const data = {
   '@context': 'https://schema.org',
@@ -12,7 +17,7 @@ const data = {
   name: pool.name,
   url: Astro.site?.href,
   logo: new URL('/logo.png', Astro.site).href,
-  image: new URL('/apple-touch-icon.png', Astro.site).href,
+  image: new URL(photo.src, Astro.site).href,
   email: pool.email,
   address: {
     '@type': 'PostalAddress',
@@ -27,4 +32,4 @@ const data = {
   parentOrganization: { '@type': 'Organization', name: pool.association },
 };
 ---
-<script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+<script is:inline type="application/ld+json" set:html={JSON.stringify(data).replace(/</g, '\\u003c')} />
