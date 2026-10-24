@@ -60,6 +60,8 @@ jobs:
       - run: npm ci --ignore-scripts
       - run: npm audit --omit=dev --audit-level=high
       - run: npm test
+      # Type-checks pages against pool.ts and the content schemas.
+      - run: npm run check
       - run: npm run build
 
       # Skipped until the Pages project and secrets exist, and on PRs from forks.
