@@ -1,0 +1,101 @@
+---
+import PageLayout from '../layouts/PageLayout.astro';
+import { pool } from '../data/pool';
+
+const p = pool.prices;
+const party = pool.parties;
+---
+<PageLayout title="Pool Information and Rules" heading="Membership" pre="at the" description="Wendwood Pool membership types, guest fees, hours, and pool rules.">
+  <div class="rules">
+    <h2>{pool.season} Pool Information &amp; Rules</h2>
+
+    <section>
+      <h3>Types of Memberships</h3>
+      <p><strong>Household Pool Membership:</strong> ${p.household.volunteer} + {pool.volunteerHours} hours of volunteer service</p>
+      <p><strong>Household Pool Membership:</strong> ${p.household.noVolunteer} no volunteer hours</p>
+      <p><em>For households with at least 2 members</em></p>
+      <p>Includes use of the pool all season, 5 guest passes, and participation in all Association-sponsored activities. Enjoy free Wi-Fi at the pool!</p>
+      <p><strong>Single/Senior Pool Membership:</strong> ${p.single.volunteer} + {pool.volunteerHours} hours of volunteer service</p>
+      <p><strong>Single/Senior Pool Membership:</strong> ${p.single.noVolunteer} no volunteer hours</p>
+      <p><em>For households of 1 person OR 2 people if one is 60+ by June 30, {pool.season}</em></p>
+      <p>Includes use of the pool all season, 5 guest passes, and participation in all Association-sponsored activities. Enjoy free Wi-Fi at the pool!</p>
+      <p><strong>I Support Wendwood Membership:</strong> ${p.supportWendwood}</p>
+      <p><em>For households not interested in pool membership</em></p>
+      <p>Help us beautify the neighborhood with landscaping projects and participate in any Association-sponsored activity outside of the pool. Enjoy free Wi-Fi at the pool!</p>
+    </section>
+
+    <section>
+      <h3>Add-ons, Fees, &amp; Passes</h3>
+      <p><strong>Guest Add-ons:</strong> ${p.guestAddOn} each</p>
+      <p>Add-ons allow Members to bring a different guest anytime they visit the pool. Great for bringing a friend, babysitter, neighbor, or more.</p>
+      <p><strong>Local Guests:</strong> ${p.localGuestDay} per guest per day</p>
+      <p>Guests can be anyone living between a 1-mile and 50-mile radius of the pool. Neighbors within 1 mile do not qualify as local guests but can be a guest add-on. All guests must be accompanied by a current pool member.</p>
+      <p><strong>Non-local Guests:</strong> Free</p>
+      <p>Guests beyond a 50-mile radius may attend for free. Must be accompanied by a current pool member.</p>
+      <p><strong>Guest Passes:</strong> ${p.guestPass} per pass OR ${p.guestPass12} for 12 passes</p>
+      <p>Passes can be purchased individually or in groups of 12 at the snack shack or online. Passes are added to your account and used at check-in.</p>
+    </section>
+
+    <section>
+      <h3>Membership Cards &amp; Sign In</h3>
+      <p><strong>Membership Cards</strong></p>
+      <p>Membership cards will be emailed as e-passes. Printed passes are available upon request.</p>
+      <p><strong>Sign-In</strong></p>
+      <p>Members must scan their card or e-pass at the check-in kiosk. Guest passes are managed through the system and may be purchased online or at the snack shack.</p>
+    </section>
+
+    <section>
+      <h3>Swim Team</h3>
+      <p>The Wendwood Wahoos compete in the GPSA White Division and are open to children included in a pool membership. Swim team fees are separate. Visit <a href={pool.swimTeam}>wendwoodwahoos.com</a> for details.</p>
+    </section>
+
+    <section>
+      <h3>Pool Season &amp; Hours</h3>
+      <p>The pool opens Memorial Day weekend and operates weekends until the regular season begins. The regular season runs June 11 through August 24 following Newport News Public Schools’ schedule.</p>
+      <p><strong>Anticipated Hours:</strong></p>
+      <ul>
+        {pool.hours.map((col) => <li>{col.label}: {col.lines.join('; ')}</li>)}
+      </ul>
+      <p><em>Hours may change due to events, attendance, and staffing.</em></p>
+    </section>
+
+    <section>
+      <h3>Pool Parties &amp; Rentals</h3>
+      <p><strong>Pool Rental</strong></p>
+      <p>Available for members only:</p>
+      <ul>
+        {party.slots.map((s) => <li>{s.days}: {s.time}</li>)}
+      </ul>
+      <p>${party.pricePerHour}/hour (includes {party.lifeguards} lifeguards, up to {party.maxGuests} guests). A signed form and ${party.deposit} non-refundable deposit are required.</p>
+      <p>Schedule at <a href="/parties/">wendwoodpool.com/parties</a></p>
+      <p>Contact: <a href={`mailto:${pool.email}`}>{pool.email}</a></p>
+    </section>
+
+    <section>
+      <h3>Pool Phone</h3>
+      <p>{pool.poolPhone} — Emergency use only.</p>
+    </section>
+
+    <section>
+      <h3>Pool Rules &amp; Regulations</h3>
+      <ul>
+        <li>Obey lifeguards at all times</li>
+        <li>Children under 12 must be supervised by someone 14+</li>
+        <li>No running</li>
+        <li>No rough play, spitting, or spouting</li>
+        <li>Diving only in designated areas</li>
+        <li>Swim diapers required if not potty trained</li>
+        <li>No alcohol</li>
+        <li>No smoking or vaping</li>
+        <li>No glass</li>
+        <li>No food or gum in the pool</li>
+        <li>No pets</li>
+        <li>No open wounds or contagious illness</li>
+        <li>No inflatables when pool is full</li>
+        <li>No jumping with inflatables</li>
+        <li>No disruptive behavior</li>
+      </ul>
+      <p><em>Management reserves the right to remove any member for unsafe or inappropriate behavior.</em></p>
+    </section>
+  </div>
+</PageLayout>

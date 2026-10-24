@@ -1,0 +1,19 @@
+---
+import { getCollection, render } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+// One page per event, except events that set `page` and have their own.
+export async function getStaticPaths() {
+  const events = await getCollection('events', (e) => !e.data.page);
+  return events.map((entry) => ({ params: { id: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<PageLayout title={entry.data.title} pre="at the" description={entry.data.summary}>
+  <div class="panel event-body">
+    <Content />
+    {entry.data.paymentLink && <p><a class="button pink" href={entry.data.paymentLink}>Order now</a></p>}
+  </div>
+</PageLayout>

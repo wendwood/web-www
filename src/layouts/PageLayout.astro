@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BaseLayout from './BaseLayout.astro';
+import Nav from '../components/Nav.astro';
+import noodles from '../assets/photos/banner-noodles.jpg';
+
+interface Props {
+  title: string;
+  description: string;
+  // Big title text, when it differs from the browser-tab title.
+  heading?: string;
+  // Small words above the "wendwood pool" script, e.g. "at the". Omit to hide the script line.
+  pre?: string;
+  // 'title': big orange title over the banner. 'bar': short banner, then a blue title bar (contact, privacy).
+  header?: 'title' | 'bar';
+  // false leaves the banner strip plain white (privacy).
+  banner?: ImageMetadata | false;
+  // White page background instead of gray (parties, contact, privacy).
+  white?: boolean;
+  // Text across most of the page width instead of the 1080px column (privacy).
+  wide?: boolean;
+}
+const { title, description, heading = title, pre, header = 'title', banner = noodles, white = false, wide = false } = Astro.props;
+---
+<BaseLayout title={title} description={description}>
+  <div slot="header" class="navbar"><Nav /></div>
+  <div class:list={['banner', { short: header === 'bar', plain: !banner }]}>
+    {banner && <Image src={banner} alt="" widths={[800, 1600, 2200]} sizes="100vw" loading="eager" />}
+  </div>
+  {header === 'bar' ? (
+    <div class="title-bar"><h1>{heading}</h1></div>
+  ) : (
+    <header class="title-box">
+      <h1>{heading}</h1>
+      {pre && <><span class="pre">{pre}</span><span class="script">wendwood pool</span></>}
+    </header>
+  )}
+  <div class:list={[{ 'white-body': white }]}>
+    <slot name="full-top" />
+    <div class:list={['page-body', wide ? 'wide' : 'wrap']}>
+      <slot />
+    </div>
+    <slot name="full" />
+  </div>
+</BaseLayout>

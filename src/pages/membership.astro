@@ -1,0 +1,69 @@
+---
+import { Image } from 'astro:assets';
+import PageLayout from '../layouts/PageLayout.astro';
+import Gallery from '../components/Gallery.astro';
+import { pool } from '../data/pool';
+import basketball from '../assets/photos/membership-basketball.jpg';
+import drink from '../assets/photos/membership-drink.jpg';
+
+const p = pool.prices;
+const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 524px' };
+---
+<PageLayout title="Membership" pre="at the" description={`${pool.season} Wendwood Pool memberships, prices, and hours.`}>
+  <div class="split narrow-gap">
+    <p class="intro-lg">The Wendwood Pool has so much to offer our members. Free WiFi allows parents to telework as the kids splash and play while our American Red Cross certified lifeguards ensure their safety in the pool. Sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn! Littles can safely play in our completely fenced-in splash pool while parents supervise nearby.</p>
+    <Image src={basketball} alt="Pool basketball" {...square} loading="eager" />
+  </div>
+
+  <div class="split narrow-gap">
+    <Image src={drink} alt="A treat from the snack shack" {...square} />
+    <section class="panel p30">
+      <h2 class="label">{pool.season} Memberships</h2>
+      <h3 class="price-head">Household</h3>
+      <p class="price-line">+{pool.volunteerHours} volunteer hours: ${p.household.volunteer}</p>
+      <p class="price-line">no volunteer hours: ${p.household.noVolunteer}</p>
+      <h3 class="price-head">Single/Senior:</h3>
+      <p class="price-line">+{pool.volunteerHours} volunteer hours: ${p.single.volunteer}</p>
+      <p class="price-line">no volunteer hours: ${p.single.noVolunteer}</p>
+      <ul class="bullets">
+        <li>Includes use of the pool all season</li>
+        <li>participation in all Association-sponsored activities.</li>
+        <li>FREE wi-fi at the pool!</li>
+      </ul>
+      <p><a class="button pink" href="/pool-rules/">{pool.season} Pool Rules</a></p>
+      <p class="callout">New to the neighborhood since April 1, {pool.season - 1}??? Get ${p.newNeighborDiscount} off your membership fee!</p>
+      <a class="button pink" href={pool.membershipSignup}>Sign up today</a>
+    </section>
+  </div>
+
+  <section class="strip orange strip-row">
+    <div>
+      <h3>I Support Wendwood Membership</h3>
+      <p>Want to help keep Wendwood beautiful and participate in Association-sponsored events, but don’t need pool privileges? Support us for ${p.supportWendwood}.</p>
+    </div>
+    <a class="button white" href={pool.membershipSignup}>Join us today</a>
+  </section>
+
+  <section class="strip magenta">
+    <h3 class="center">Anticipated Summer {pool.season} Pool Hours</h3>
+    <div class="hours-cols">
+      {pool.hours.map((col) => (
+        <div>
+          <h3>{col.label}</h3>
+          {col.lines.map((line) => <p>{line}</p>)}
+        </div>
+      ))}
+    </div>
+    <p class="footnote">*Please note that our hours celebrate the vibrancy of community life at Wendwood Pool, and these times are subject to change due to swim team events, event attendance, and scheduled parties. We will always aim to open as many hours as possible for our treasured members</p>
+  </section>
+
+  <Fragment slot="full">
+    <section class="blue-band">
+      <div class="wrap">
+        <p>Want to pay with cash or check? Fill out the online form and then select “Check” for the Payment Option.</p>
+        <a class="button white-blue" href={pool.membershipSignup}>Online form - preferred</a>
+      </div>
+    </section>
+    <Gallery />
+  </Fragment>
+</PageLayout>

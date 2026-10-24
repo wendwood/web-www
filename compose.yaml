@@ -1,0 +1,40 @@
+# Local development without installing Node. Not used in production.
+#   docker compose up                  -> dev server with live reload, http://localhost:4321
+#   docker compose --profile pages up  -> built site as Cloudflare Pages serves it
+#                                         (_redirects and _headers applied), http://localhost:8788
+
+x-node: &node
+  image: node:24-slim
+  working_dir: /app
+  init: true
+
+services:
+  dev:
+    <<: *node
+    command: sh -c "npm ci --ignore-scripts && npx astro dev --host 0.0.0.0"
+    ports:
+      - "127.0.0.1:4321:4321"
+    volumes:
+      - .:/app
+      # Linux packages for the container, kept apart from any node_modules on the host.
+      - dev_modules:/app/node_modules
+
+  pages:
+    <<: *node
+    profiles: [pages]
+    command: >
+      sh -c "npm ci --ignore-scripts
+      && npm install --no-save --ignore-scripts wrangler@4.149.0
+      && npm run build
+      && npx wrangler pages dev dist --ip 0.0.0.0 --port 8788 --compatibility-date=2026-10-06"
+    environment:
+      WRANGLER_SEND_METRICS: "false"
+    ports:
+      - "127.0.0.1:8788:8788"
+    volumes:
+      - .:/app
+      - pages_modules:/app/node_modules
+
+volumes:
+  dev_modules:
+  pages_modules:

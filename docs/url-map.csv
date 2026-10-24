@@ -1,0 +1,55 @@
+id,title,old,modified,created,action,new,note
+1960,Home,/,2026-04-11,2020-02-24,keep,/,Home page
+753,Calendar,/calendar/,2021-06-22,2018-06-28,keep,/calendar/,Google Calendar embed (wwoodpool@gmail.com)
+63,Contact,/contact/,2021-06-06,2016-07-02,keep,/contact/,Divi contact form -> needs replacement form handler
+11106,Egg My Yard,/egg-my-yard/,2026-03-08,2026-03-08,keep,/egg-my-yard/,Seasonal fundraiser (Easter); WooCommerce product with address + notes fields
+1244,Membership,/membership/,2026-06-05,2019-02-19,keep,/membership/,Prices + hours; sign-up links to Access Granted Systems
+1041,Parties,/parties/,2026-04-09,2018-12-15,keep,/parties/,Party info + new booking form
+11151,Pool Information and Rules,/pool-rules/,2026-04-09,2026-04-09,keep,/pool-rules/,2026 Pool Information & Rules (current)
+790,Privacy Policy,/privacy-policy-2/,2019-03-05,2018-10-18,keep,/privacy/,Rewrite for the new site (2019 text)
+11161,Pool Rental Agreement,/pool-rental-agreement/,2026-04-10,2026-04-09,merge,/parties/,Rules move onto /parties/; consent becomes a checkbox in the booking form
+9123,BBQ Sign Up,/bbq-sign-up/,2024-06-12,2024-06-12,archive,/events/,2024 one-off event
+1716,Cookout Sign Up,/cookout-sign-up/,2023-07-31,2019-07-29,archive,/events/,2023 one-off event
+8315,Dog Days of Summer Pool-ooza,/dog-days-of-summer-pool-ooza/,2023-09-04,2023-09-04,archive,/events/,"2023 event, WooCommerce booking product"
+844,Light Up Wendwood,/light-up-wendwood/,2021-11-22,2018-11-16,archive,/events/,2021 holiday event
+7228,Painting the Pool,/painting-the-pool/,2021-05-19,2021-05-17,archive,/events/,2021 volunteer event
+1813,Proxy Vote 2023 Annual Meeting,/proxy-vote-2023-annual-meeting/,2023-11-03,2019-11-01,archive,/events/,2023 annual meeting proxy (form?) - confirm
+8963,Snack Shack Crew Survey,/snack-shack-crew-survey/,2024-05-14,2024-05-13,archive,/events/,2024 survey
+6932,Turkey Trot Time,/turkey-trot-time/,2020-11-15,2020-11-15,archive,/events/,2020 event
+1139,Schedule an Appointment,/appointments-2/,2019-01-15,2019-01-15,drop,/,2019 plugin leftover
+1036,Schedule an Appointment,/appointments/,2018-12-15,2018-12-15,drop,/,2018 plugin leftover
+1385,Association Membership Form,/association-membership-form/,2020-06-23,2019-03-09,drop,/membership/,2020
+1407,Association Payment Options,/association-payment-options/,2023-02-28,2019-03-09,drop,/membership/,2023
+1194,Cart,/cart/,2020-06-02,2019-01-15,drop,/,WooCommerce
+1196,Checkout,/checkout/,2019-03-09,2019-01-15,drop,/,WooCommerce
+4096,COVID-19,/covid-19/,2020-05-23,2020-05-23,drop,/,2020
+2040,Lap Sign Up,/lap-sign-up/,2020-05-09,2020-05-09,drop,/,2020 COVID lane booking
+1268,Membership Add-Ons,/membership-add-ons/,2019-02-19,2019-02-19,drop,/membership/,2019
+193,New Home,/new-home/,2020-06-23,2018-05-05,drop,/,Old 2020 home page draft
+1115,Afternoon Schedule,/parties/afternoon-schedule/,2018-12-15,2018-12-15,drop,/parties/,2018 stub
+1051,Schedule a Pool Party,/parties/schedule-pool-party/,2019-06-05,2018-12-15,drop,/parties/,Broken: raw [ssa_booking]/[wp_paypal] shortcodes showing
+1086,Weekday Evening Schedule,/parties/weekday-evening-schedule/,2018-12-15,2018-12-15,drop,/parties/,2018 stub
+1088,Weekday Morning Schedule,/parties/weekday-morning-schedule/,2018-12-15,2018-12-15,drop,/parties/,2018 stub
+1068,Weekend Evening Schedule,/parties/weekend-evening-schedule/,2018-12-15,2018-12-15,drop,/parties/,2018 stub
+492,Pool Information,/pool-information/,2020-06-25,2018-05-19,drop,/pool-rules/,2020
+995,Pool Membership and Usage Terms and Agreements,/pool-membership-and-usage-terms-and-agreements/,2018-12-13,2018-12-13,drop,/pool-rules/,2018
+4780,Pool Membership Form,/pool-membership-form/,2023-03-03,2020-06-02,drop,/membership/,2023 Divi membership form (collects kids names/ages) - replaced by Access Granted
+4698,Pool Membership Payment Options,/pool-membership-payment-options/,2023-02-28,2020-06-02,drop,/membership/,2023
+1454,Product Layout,/product-layout/,2019-03-09,2019-03-09,drop,/,Divi layout scaffold
+4291,Reserve our Splash Pool,/reserve-our-splash-pool/,2020-06-02,2020-05-25,drop,/,2020 COVID splash pool booking
+2,Sample Page,/sample-page/,2019-01-14,2019-01-14,drop,/,WordPress default
+1259,Single Membership Layout,/single-membership-layout/,2019-03-09,2019-02-19,drop,/,Divi layout scaffold
+7196,Sponsor the Wahoos,/sponsor-the-wahoos/,2023-04-18,2021-04-30,drop,https://www.wendwoodwahoos.com/,2023 sponsorship; belongs on the Wahoos site
+479,Swim Lessons,/swim-lessons/,2018-05-19,2018-05-19,drop,/,2018; home page has current lessons blurb
+297,Swim Team,/swim-team/,2023-03-22,2018-05-15,drop,https://www.wendwoodwahoos.com/,Stale (2022/2023 dates); main menu already points to wendwoodwahoos.com
+2057,Swimming Pool Lap Reservation,/swimming-pool-lap-reservation/,2020-06-02,2020-05-14,drop,/,2020 COVID lane booking
+7475,Team Pictures,/team-pictures/,2021-07-16,2021-07-05,drop,https://www.wendwoodwahoos.com/,2021
+392,Trial Membership Signup,/trial-membership-signup/,2018-05-18,2018-05-18,drop,/membership/,2018
+472,Volunteers,/volunteers/,2018-05-19,2018-05-19,drop,/membership/,2018
+6266,Wahoo News,/wahoo-news/,2020-07-28,2020-06-26,drop,https://www.wendwoodwahoos.com/,2020
+5455,Water Aerobics,/water-aerobics/,2020-06-06,2020-06-06,drop,/,2020 class booking
+828,We Listen,/we-listen/,2019-03-09,2018-11-16,drop,/contact/,2019
+5178,We Love Wendwood Membership,/we-love-wendwood-membership/,2020-06-23,2020-06-03,drop,/membership/,2020
+1273,Wendwood Association Initiation Fee,/wendwood-association-initiation-fee/,2019-02-19,2019-02-19,drop,/membership/,2019
+237,New Membership,/2019-membership,2019-03-09,2018-05-07,link-only,(none),"Page Links To redirect page, not real content"
+1357,Pool Rules and Information,/wp-content/uploads/2019/03/Wendwood-Association-2019-Pool-Membership-Application.pdf/,2019-03-05,2019-03-05,link-only,(none),Page Links To stub pointing at a 2019 PDF
