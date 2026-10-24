@@ -3,5 +3,5 @@ import PageLayout from '../layouts/PageLayout.astro';
 import { pool } from '../data/pool';
 ---
 <PageLayout title="Calendar" pre="for the" description="Wendwood Pool events, parties, and closures.">
-  <div class="panel"><iframe class="embed" src={pool.calendarEmbed} title="Wendwood Pool calendar" loading="lazy"></iframe></div>
+  <iframe class="calendar-embed" src={pool.calendarEmbed} title="Wendwood Pool calendar" loading="lazy"></iframe>
 </PageLayout>

@@ -4,7 +4,7 @@
 export const pool = {
   name: 'Wendwood Pool',
   association: 'Wendwood Association',
-  address: '320 Dominion Dr., Newport News, VA 23602',
+  addressLines: ['320 Dominion Dr.', 'Newport News, VA 23602'],
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=320+Dominion+Dr+Newport+News+VA+23602',
   email: 'wwoodpool@gmail.com',
   poolPhone: '(757) 249-9000',
@@ -29,11 +29,13 @@ export const pool = {
   },
   volunteerHours: 8,
 
+  // From the membership page (edited most recently); the old rules page listed different hours.
   hours: [
-    { days: 'Mondays', time: '11am – 4pm' },
-    { days: 'Tuesdays & Fridays', time: '11am – 10pm' },
-    { days: 'Wednesdays & Thursdays', time: '11am – 7pm' },
-    { days: 'Saturdays & Sundays', time: '12pm – 6pm' },
+    { label: 'Weekends until June 7th', lines: ['Saturdays and Sundays – Noon – 6pm'] },
+    {
+      label: 'Starting June 15th',
+      lines: ['Mondays: 11am – 4pm', 'Tuesdays – Fridays: 11am – 8pm', 'Saturdays: 12pm – 8pm', 'Sundays: 12pm – 6pm'],
+    },
   ],
 
   parties: {
@@ -42,13 +44,15 @@ export const pool = {
     maxGuests: 50,
     lifeguards: 2,
     slots: [
-      { days: 'Saturday & Sunday mornings', time: '9am – noon' },
-      { days: 'Friday & Saturday evenings', time: '7pm – 10pm' },
+      { days: 'Saturday & Sunday Mornings', time: '9:00am – Noon' },
+      { days: 'Friday, Saturday, & Sunday Evenings', time: '7:00 – 10:00pm' },
     ],
     // Off-season: online booking is not open. Set true once the booking system exists.
     bookingOpen: false,
   },
 } as const;
+
+export const address = pool.addressLines.join(', ');
 
 export const nav = [
   { href: '/', label: 'Home' },

@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+import g1 from '../assets/photos/gallery-1.jpg';
+import g2 from '../assets/photos/gallery-2.jpg';
+import g3 from '../assets/photos/gallery-3.jpg';
+import g4 from '../assets/photos/gallery-4.jpg';
+import g5 from '../assets/photos/gallery-5.jpg';
+
+const photos = [
+  { src: g1, alt: 'Water fight at the pool' },
+  { src: g2, alt: 'A young swimmer in a shark towel' },
+  { src: g3, alt: 'Kids in superhero masks' },
+  { src: g4, alt: 'A treat from the snack shack' },
+  { src: g5, alt: 'A baby in a pool float' },
+];
+---
+<div class="gallery">
+  {photos.map((p) => <Image src={p.src} alt={p.alt} widths={[400, 800]} sizes="(max-width: 640px) 50vw, 20vw" />)}
+</div>

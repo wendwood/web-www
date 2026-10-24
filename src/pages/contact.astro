@@ -1,19 +1,19 @@
 ---
 import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
-import { pool } from '../data/pool';
+import { pool, address } from '../data/pool';
 import entrance from '../assets/photos/contact-entrance.jpg';
 ---
-<PageLayout title="Contact" description="How to reach the Wendwood Pool.">
-  <div class="split">
-    <section class="panel">
-      <h2>We want to hear from you!</h2>
+<PageLayout title="Contact" heading="Contact Us" header="bar" white description="How to reach the Wendwood Pool.">
+  <h2>We Want to Hear from You!</h2>
+  <div class="split contact-row">
+    <div>
       <p><strong>Email:</strong> <a href={`mailto:${pool.email}`}>{pool.email}</a></p>
       <p><strong>Facebook:</strong> <a href={pool.facebook}>facebook.com/wendwood.pool</a></p>
-      <p><strong>Address:</strong> <a href={pool.mapUrl}>{pool.address}</a></p>
-      <p><strong>Pool phone:</strong> {pool.poolPhone} (emergencies only, during pool hours)</p>
-      <a class="button" href={`mailto:${pool.email}`}>Email us</a>
-    </section>
+      <p><strong>Address:</strong> <a href={pool.mapUrl}>{address}</a></p>
+      <p><strong>Pool phone:</strong> {pool.poolPhone} (emergency use only)</p>
+      <a class="button purple" href={`mailto:${pool.email}`}>Email us</a>
+    </div>
     <Image src={entrance} alt="The pool entrance" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 510px" />
   </div>
 </PageLayout>

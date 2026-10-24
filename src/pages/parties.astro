@@ -1,36 +1,36 @@
 ---
 import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
-import Notice from '../components/Notice.astro';
 import { pool } from '../data/pool';
 import partyPhoto from '../assets/photos/home-party.jpg';
 
 const party = pool.parties;
 ---
-<PageLayout title="Parties" pre="at the" description="Rent the Wendwood Pool for a private party. Members only.">
+<PageLayout title="Parties" pre="at the" white description="Rent the Wendwood Pool for a private party. Members only.">
   <p class="lead">Adding water to any celebration makes it more fun! Host your summer party at the Wendwood Pool.</p>
-
-  {!party.bookingOpen && (
-    <Notice>Online party bookings are unavailable right now. They'll reopen before the pool season starts.</Notice>
-  )}
 
   <div class="split">
     <Image src={partyPhoto} alt="A birthday treat at a pool party" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 510px" />
-    <section>
+    <section class="party-info">
       <h2 class="label">Party Registration</h2>
-      <p><strong>Because of our insurance, the pool can only be rented to members for private parties.</strong></p>
+      <p class="warning">DUE TO RECENT CHANGES IN OUR INSURANCE, OUR POOL CAN ONLY BE RENTED TO MEMBERS FOR PRIVATE PARTIES.</p>
       {party.slots.map((s) => <p><span class="slot">{s.days}:</span> {s.time}</p>)}
       <ul>
         <li>${party.pricePerHour} per hour (members only)</li>
-        <li>{party.lifeguards} lifeguards included</li>
+        <li>{party.lifeguards} Lifeguards Included</li>
         <li>Up to {party.maxGuests} guests</li>
       </ul>
-      <p class="fine">A signed rental agreement and a ${party.deposit} non-refundable deposit are required to secure your date.</p>
+      <p class="deposit">${party.deposit} Deposit Required to secure date.</p>
+      {!party.bookingOpen && (
+        <p class="booking-notice">Online party bookings are unavailable right now. They'll reopen before the pool season starts.</p>
+      )}
     </section>
   </div>
 
-  <section class="section-magenta strip">
-    <h2>Have questions about hosting a party?</h2>
-    <a class="button white" href={`mailto:${pool.email}?subject=Pool%20party%20question`}>Email us</a>
+  <section slot="full" class="party-questions">
+    <div class="wrap">
+      <h2>Have Questions About Hosting A Party?</h2>
+      <a class="button white" href={`mailto:${pool.email}?subject=Pool%20party%20question`}>Email us</a>
+    </div>
   </section>
 </PageLayout>
