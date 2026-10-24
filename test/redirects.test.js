@@ -41,6 +41,15 @@ for (const row of rows) {
   });
 }
 
+// Pages matches paths exactly, so /cart and /cart/ each need a rule.
+test('every exact redirect works with and without the trailing slash', () => {
+  for (const [from, { to }] of rules) {
+    if (from.includes('*')) continue;
+    const twin = from.endsWith('/') ? from.slice(0, -1) : `${from}/`;
+    assert.equal(rules.get(twin)?.to, to, `add "${twin} ${to} 301" next to ${from}`);
+  }
+});
+
 test('every internal redirect target is a real page', () => {
   for (const { to } of rules.values()) {
     if (to.startsWith('http') || to.includes(':splat')) continue;
