@@ -30,6 +30,7 @@ test/                 node --test checks (redirect coverage)
 ```sh
 npm ci --ignore-scripts && npm test && npm run build   # keep green
 npm run dev                                            # http://localhost:4321
+docker compose --profile pages up                      # :8788, applies _redirects/_headers like Pages
 ```
 
 ## Workflow

@@ -15,6 +15,16 @@ npm test           # checks every old URL still works
 npm run build      # builds the site into dist/
 ```
 
+### With Docker instead of Node
+
+```sh
+docker compose up                   # dev server with live reload, http://localhost:4321
+docker compose --profile pages up   # built site as Cloudflare serves it, http://localhost:8788
+docker compose down                 # stop
+```
+
+Use the second one to check redirects and security headers, which `npm run dev` doesn't apply.
+
 ## Editing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). In short: hours, prices and contacts live in `src/data/pool.ts`; each page is a file in `src/pages/`; rules, privacy and events are Markdown in `src/content/`.
