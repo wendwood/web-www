@@ -26,12 +26,12 @@ const p = pool.prices;
         </thead>
         <tbody>
           <tr>
-            <th scope="row">Household<span>Households of 2 or more</span></th>
+            <th scope="row">Household<span>{pool.eligibility.household}</span></th>
             <td data-label={`With ${pool.volunteerHours} volunteer hours`}>${p.household.volunteer}</td>
             <td data-label="Without volunteer hours">${p.household.noVolunteer}</td>
           </tr>
           <tr>
-            <th scope="row">Single or senior<span>1 person, or 2 if one is 60+ by June 30, {pool.season}</span></th>
+            <th scope="row">Single or senior<span>{pool.eligibility.single}, {pool.season}</span></th>
             <td data-label={`With ${pool.volunteerHours} volunteer hours`}>${p.single.volunteer}</td>
             <td data-label="Without volunteer hours">${p.single.noVolunteer}</td>
           </tr>
@@ -40,7 +40,7 @@ const p = pool.prices;
     </div>
     <ul class="checks">
       <li>Use of the pool all season</li>
-      <li>5 guest passes</li>
+      <li>{pool.guestPassesIncluded} guest passes</li>
       <li>All Association-sponsored activities</li>
       <li>Free Wi-Fi at the pool</li>
     </ul>

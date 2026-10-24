@@ -2,7 +2,7 @@
    Association's purple. Change a color here and every page follows. */
 :root {
   --ink: #0b3954;        /* deep end: text and headings */
-  --pool: #0e7fb0;       /* page headers, links */
+  --pool: #0b6690;       /* page headers, links */
   --pool-light: #8fd8f2;
   --water: #eef8fc;      /* page background */
   --sun: #ffc83d;        /* buttons, highlights */
@@ -109,7 +109,7 @@ ul, ol { margin: 0 0 1em; padding-left: 1.25em; }
 .hours-sign { background: var(--pool); color: var(--white); border-radius: var(--r-box); padding: 28px 32px; border: 2px solid var(--ink); }
 .hours-sign h2 { color: var(--white); }
 .hours-cols { display: grid; grid-template-columns: 1fr 1.4fr; gap: 24px; }
-.hours-cols h3 { color: var(--sun); margin-bottom: .4em; }
+.hours-cols h3 { color: var(--sun); font-size: 1.2rem; margin-bottom: .4em; }
 .hours-cols ul { list-style: none; padding: 0; margin: 0; font-weight: 600; font-size: 1.1rem; }
 .hours-cols li + li { margin-top: 4px; }
 .hours-note { font-size: .9375rem; margin: 20px 0 0; opacity: .92; }

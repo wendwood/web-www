@@ -11,12 +11,12 @@ const party = pool.parties;
       <h3>Types of Memberships</h3>
       <p><strong>Household Pool Membership:</strong> ${p.household.volunteer} + {pool.volunteerHours} hours of volunteer service</p>
       <p><strong>Household Pool Membership:</strong> ${p.household.noVolunteer} no volunteer hours</p>
-      <p><em>For households with at least 2 members</em></p>
-      <p>Includes use of the pool all season, 5 guest passes, and participation in all Association-sponsored activities. Enjoy free Wi-Fi at the pool!</p>
+      <p><em>{pool.eligibility.household}</em></p>
+      <p>Includes use of the pool all season, {pool.guestPassesIncluded} guest passes, and participation in all Association-sponsored activities. Enjoy free Wi-Fi at the pool!</p>
       <p><strong>Single/Senior Pool Membership:</strong> ${p.single.volunteer} + {pool.volunteerHours} hours of volunteer service</p>
       <p><strong>Single/Senior Pool Membership:</strong> ${p.single.noVolunteer} no volunteer hours</p>
-      <p><em>For households of 1 person OR 2 people if one is 60+ by June 30, {pool.season}</em></p>
-      <p>Includes use of the pool all season, 5 guest passes, and participation in all Association-sponsored activities. Enjoy free Wi-Fi at the pool!</p>
+      <p><em>{pool.eligibility.single}, {pool.season}</em></p>
+      <p>Includes use of the pool all season, {pool.guestPassesIncluded} guest passes, and participation in all Association-sponsored activities. Enjoy free Wi-Fi at the pool!</p>
       <p><strong>I Support Wendwood Membership:</strong> ${p.supportWendwood}</p>
       <p><em>For households not interested in pool membership</em></p>
       <p>Help us beautify the neighborhood with landscaping projects and participate in any Association-sponsored activity outside of the pool. Enjoy free Wi-Fi at the pool!</p>

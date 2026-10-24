@@ -28,6 +28,12 @@ export const pool = {
     newNeighborDiscount: 50,
   },
   volunteerHours: 8,
+  guestPassesIncluded: 5,
+  // Who each membership is for. The single/senior age cutoff is June 30 of the season.
+  eligibility: {
+    household: 'Households of 2 or more',
+    single: 'Households of 1 person, or 2 if one is 60+ by June 30',
+  },
 
   // From the membership page (edited most recently); the old rules page listed different hours.
   hours: [
