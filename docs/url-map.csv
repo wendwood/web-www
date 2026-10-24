@@ -51,5 +51,5 @@ id,title,old,modified,created,action,new,note
 828,We Listen,/we-listen/,2019-03-09,2018-11-16,drop,/contact/,2019
 5178,We Love Wendwood Membership,/we-love-wendwood-membership/,2020-06-23,2020-06-03,drop,/membership/,2020
 1273,Wendwood Association Initiation Fee,/wendwood-association-initiation-fee/,2019-02-19,2019-02-19,drop,/membership/,2019
-237,New Membership,/2019-membership,2019-03-09,2018-05-07,link-only,(none),"Page Links To redirect page, not real content"
-1357,Pool Rules and Information,/wp-content/uploads/2019/03/Wendwood-Association-2019-Pool-Membership-Application.pdf/,2019-03-05,2019-03-05,link-only,(none),Page Links To stub pointing at a 2019 PDF
+237,New Membership,/2019-membership,2019-03-09,2018-05-07,link-only,/membership/,"Page Links To redirect page, not real content"
+1357,Pool Rules and Information,/wp-content/uploads/2019/03/Wendwood-Association-2019-Pool-Membership-Application.pdf/,2019-03-05,2019-03-05,link-only,/membership/,Page Links To stub pointing at a 2019 PDF
