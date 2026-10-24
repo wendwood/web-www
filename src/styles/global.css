@@ -56,9 +56,11 @@ p { margin: 0 0 1em; }
 .hero-top hr { max-width: 550px; border: 0; border-top: 2px solid var(--orange); margin: 10px auto 0; }
 .hero .nav a { color: var(--orange); text-shadow: 0 0 6px rgba(255, 255, 255, .8); }
 .tiles { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: -90px; }
-.tile { color: var(--white); padding: 30px; min-height: 430px; }
+.tile { display: block; color: var(--white); text-decoration: none; padding: 30px; min-height: 430px; transition: transform 300ms ease; }
+/* The old site's tiles lift on hover. */
+.tile:hover, .tile:focus-visible { transform: translateY(-32px); }
+@media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
 .tile h3 { color: var(--white); font-size: clamp(1.8rem, 3vw, 2.6rem); }
-.tile a { color: var(--white); font-weight: 700; }
 .t-magenta { background: var(--magenta); }
 .t-orange { background: var(--orange); }
 .t-sky { background: var(--sky); }
