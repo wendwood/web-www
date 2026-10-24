@@ -10,7 +10,7 @@ src/data/pool.ts      hours, prices, party details, contacts, site notice: the s
 src/pages/            one .astro file per URL
 src/content/pages/    Markdown for text-heavy pages (rules, privacy)
 src/content/events/   one Markdown file per event; page at /events/<id>/ unless `page:` names its own
-src/components/, src/layouts/, src/styles/global.css   look ported from the old Divi theme
+src/components/, src/layouts/, src/styles/global.css   design; colors and fonts are tokens at the top of global.css
 src/assets/photos/    photos, resized by Astro at build
 public/_redirects     old WordPress URLs -> new pages; public/_headers: CSP and security headers
 public/files/         PDFs kept at their old upload paths (listed in docs/inventory.md)

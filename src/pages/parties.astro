@@ -1,36 +1,44 @@
 ---
-import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
 import { pool } from '../data/pool';
 import partyPhoto from '../assets/photos/home-party.jpg';
 
 const party = pool.parties;
 ---
-<PageLayout title="Parties" pre="at the" white description={`Members can rent Wendwood Pool in Newport News for a private party: $${pool.parties.pricePerHour} an hour with ${pool.parties.lifeguards} lifeguards and up to ${pool.parties.maxGuests} guests.`}>
-  <p class="lead">Adding water to any celebration makes it more fun! Host your summer party at the Wendwood Pool.</p>
+<PageLayout
+  title="Parties"
+  heading="Pool parties"
+  description={`Members can rent Wendwood Pool in Newport News for a private party: $${pool.parties.pricePerHour} an hour with ${pool.parties.lifeguards} lifeguards and up to ${pool.parties.maxGuests} guests.`}
+  lead="Adding water to any celebration makes it more fun. Host your summer party at Wendwood Pool."
+  photo={partyPhoto}
+  photoAlt="A birthday treat at a pool party"
+>
+  <p class="members-only">Our insurance lets us rent the pool for private parties to members only.</p>
 
-  <div class="split">
-    <Image src={partyPhoto} alt="A birthday treat at a pool party" loading="eager" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 510px" />
-    <section class="party-info">
-      <h2 class="label">Party Registration</h2>
-      <p class="warning">DUE TO RECENT CHANGES IN OUR INSURANCE, OUR POOL CAN ONLY BE RENTED TO MEMBERS FOR PRIVATE PARTIES.</p>
-      {party.slots.map((s) => <p><span class="slot">{s.days}:</span> {s.time}</p>)}
-      <ul>
-        <li>${party.pricePerHour} per hour (members only)</li>
-        <li>{party.lifeguards} Lifeguards Included</li>
+  <div class="split party">
+    <section>
+      <h2>Party times</h2>
+      <dl class="fee-list">
+        {party.slots.map((s) => <div><dt>{s.days}</dt><dd>{s.time}</dd></div>)}
+      </dl>
+    </section>
+    <section>
+      <h2>What's included</h2>
+      <ul class="checks">
+        <li>${party.pricePerHour} per hour</li>
+        <li>{party.lifeguards} lifeguards</li>
         <li>Up to {party.maxGuests} guests</li>
       </ul>
-      <p class="deposit">${party.deposit} Deposit Required to secure date.</p>
-      {!party.bookingOpen && (
-        <p class="booking-notice">Online party bookings are unavailable right now. They'll reopen before the pool season starts.</p>
-      )}
+      <p>A ${party.deposit} deposit holds your date.</p>
     </section>
   </div>
 
-  <section slot="full" class="party-questions">
-    <div class="wrap">
-      <h2>Have Questions About Hosting A Party?</h2>
-      <a class="button white" href={`mailto:${pool.email}?subject=Pool%20party%20question`}>Email us</a>
-    </div>
+  {!party.bookingOpen && (
+    <p class="notice-box">Online party booking is closed for now. It reopens before the pool season starts.</p>
+  )}
+
+  <section class="ask">
+    <h2>Questions about hosting a party?</h2>
+    <p><a class="button" href={`mailto:${pool.email}?subject=Pool%20party%20question`}>Email us</a></p>
   </section>
 </PageLayout>

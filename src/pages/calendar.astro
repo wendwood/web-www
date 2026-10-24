@@ -6,8 +6,8 @@ import { pool } from '../data/pool';
 const calendarId = new URL(pool.calendarEmbed).searchParams.get('src') ?? '';
 const subscribe = `https://calendar.google.com/calendar/u/0?cid=${btoa(calendarId)}`;
 ---
-<PageLayout title="Calendar" pre="for the" description="The Wendwood Pool calendar: Association events, private parties, and pool closures in Newport News, VA. Check it before you head to the pool.">
-  <p>Association events, private parties, and pool closures. Check here before you head to the pool. For details on upcoming fundraisers, see <a href="/events/">Events</a>; to host your own, see <a href="/parties/">Parties</a>.</p>
+<PageLayout title="Calendar" description="The Wendwood Pool calendar: Association events, private parties, and pool closures in Newport News, VA. Check it before you head to the pool." lead="Association events, private parties, and pool closures. Check here before you head to the pool.">
+  <p>For details on upcoming fundraisers, see <a href="/events/">Events</a>; to host your own, see <a href="/parties/">Parties</a>.</p>
   <iframe class="calendar-embed" src={pool.calendarEmbed} title="Wendwood Pool calendar" loading="lazy"></iframe>
   <p><a href={subscribe}>Add this calendar to your Google Calendar</a></p>
 </PageLayout>

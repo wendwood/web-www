@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BusinessInfo from '../components/BusinessInfo.astro';
-import Nav from '../components/Nav.astro';
+import Hours from '../components/Hours.astro';
 import { pool } from '../data/pool';
 import hero from '../assets/photos/hero-home.jpg';
 import lifeguard from '../assets/photos/home-lifeguard.jpg';
@@ -11,82 +11,76 @@ import swimTeam from '../assets/photos/home-swim-team.jpg';
 import lessons from '../assets/photos/home-lessons.jpg';
 import float from '../assets/photos/band-float.jpg';
 
-const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 510px' };
+const p = pool.prices;
+const card = { widths: [400, 700], sizes: '(max-width: 760px) 100vw, 360px' };
 ---
 <BaseLayout title={`${pool.name} | Neighborhood Pool in Newport News, VA`} description="Wendwood Pool is a members-only neighborhood pool in Newport News, VA, with a splash pad, pool parties, and the Wendwood Wahoos swim team.">
   <BusinessInfo slot="head" />
-  <header slot="header" class="hero">
-    <Image src={hero} alt="" widths={[800, 1600, 2200]} sizes="100vw" loading="eager" />
-    <div class="hero-top">
-      <h1 class="wordmark">Wendwood Pool</h1>
-      <hr />
-      <Nav />
-    </div>
-  </header>
-
-  <div class="wrap home">
-    <div class="tiles">
-      <a class="tile t-magenta" href="/membership/">
-        <h3>Join Our Pool</h3>
-        <p>The Wendwood Pool has so much to offer our members. You can sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn! With free wifi, you can even work as your kids splash and play while our American Red Cross certified lifeguards ensure their safety in the pool.</p>
-      </a>
-      <a class="tile t-orange" href={pool.swimTeam} target="_blank" rel="noopener">
-        <h3>Swim on our Team</h3>
-        <p>The Wendwood Wahoos are small, but mighty. We work hard, learn proper swim technique, cheer on our teammates, and have FUN!</p>
-      </a>
-      <a class="tile t-sky" href="/parties/">
-        <h3>Rent the Pool</h3>
-        <p>Want to make a splash for your next event? Book a party at the Wendwood Pool! Use our 2500 sq. ft. pool, deck and accompanying grounds to celebrate.</p>
-      </a>
-      <div class="tile t-lime">
-        <h3>Day Passes</h3>
-        <p>Our pool insurance is limited to members and their guests. Therefore, we cannot offer day passes.</p>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>Wendwood Pool</h1>
+        <p class="lead">A shady oasis tucked in a quiet Newport News neighborhood. Bring a book and relax on our pool deck.</p>
+        <p class="actions">
+          <a class="button" href="/membership/">Become a member</a>
+          <a class="button alt" href="#hours">See pool hours</a>
+        </p>
       </div>
+      <Image class="hero-photo" src={hero} alt="A girl in star sunglasses and armbands swimming" widths={[800, 1200, 1600]} sizes="(max-width: 760px) 100vw, 60vw" loading="eager" />
     </div>
+  </section>
+  <div class="lane" aria-hidden="true"></div>
 
-    <div class="split">
-      <section class="panel p40">
-        <h2>Welcome to our Pool!</h2>
-        <p>The Wendwood Pool is a neighborhood pool located in Newport News. It is a 4 lane, 25 yard pool, home to the Wendwood Wahoos, its competitive swim team. One third of the pool is 3 feet or less, allowing young minnows plenty of room to play. The pool is always supervised by a Red Cross Certified lifeguard. Another third is a little deeper – perfect for hours of pool games. In the deep end, cannonballs from the diving board occur daily. The deck is filled with umbrellaed tables and plenty of reclining chairs, ideal for sunbathing. A separate splash pad allows even the littlest swimmers to play without being intimidated by bigger swimmers.</p>
-        <a class="button" href="/membership/">Join us</a>
-      </section>
-      <Image src={lifeguard} alt="Lifeguard stand and pool deck with umbrellas" {...square} />
-    </div>
-
-    <div class="split">
-      <Image src={party} alt="A birthday treat at a pool party" {...square} />
-      <section class="panel">
-        <h2>Book a Pool Party!</h2>
-        <p>Want to make a splash for your next event? Book a party at the Wendwood Pool! Use our 2500 sq. ft. pool, deck and accompanying grounds to celebrate.</p>
-        <a class="button" href="/parties/">See party details</a>
+  <div class="wrap">
+    <div class="home-hours" id="hours">
+      <Hours />
+      <section class="visit-note">
+        <h2>Visiting without a membership?</h2>
+        <p>Our pool insurance covers members and their guests, so we can't sell day passes.</p>
+        <p>Come as a member's guest instead: local guests are ${p.localGuestDay} a day, and guests from more than 50 miles away swim free.</p>
+        <p><a href="/pool-rules/">Guest rules and passes</a></p>
       </section>
     </div>
 
-    <div class="split">
-      <section class="panel">
-        <h2>Join the Wahoos Swim Team!</h2>
-        <p>Wendwood Pool is home of the Wahoos, a vibrant constellation of young talents who bring their all to the pool every day. Our team might be small in number, but we are unyielding in spirit and determination.</p>
-        <p>Join us as we navigate the waters of competition and camaraderie, making waves with our dedication, resilience, and shared love for swimming. The Wendwood Wahoos aren’t just a team; we’re a family.</p>
-        <a class="button" href={pool.swimTeam}>Wahoos website</a>
-      </section>
-      <Image src={swimTeam} alt="A Wahoos swimmer doing breaststroke" {...square} />
-    </div>
+    <section class="split welcome">
+      <div>
+        <h2>Welcome to our pool</h2>
+        <p>Wendwood is a 4-lane, 25-yard neighborhood pool and home of the Wendwood Wahoos swim team. A Red Cross certified lifeguard is always on duty.</p>
+        <p>One third of the pool is 3 feet or less, with plenty of room for young minnows. The middle third is a little deeper, perfect for hours of pool games, and in the deep end cannonballs off the diving board happen daily. A separate, fenced splash pad lets the littlest swimmers play away from the big kids.</p>
+        <p>The deck has umbrella tables and plenty of reclining chairs for sunbathing, and free Wi-Fi if you need to work while the kids splash.</p>
+        <p><a class="button" href="/membership/">Join us</a></p>
+      </div>
+      <Image src={lifeguard} alt="Lifeguard stand and pool deck with umbrellas" widths={[400, 700]} sizes="(max-width: 760px) 100vw, 520px" />
+    </section>
 
-    <div class="split">
-      <Image src={lessons} alt="A young swimmer with a kickboard" {...square} />
-      <section class="panel">
-        <h2>Learn to Swim!</h2>
-        <p><em>We are hoping to have a staff member offer lessons in 2026 and will release info when available</em></p>
+    <div class="trio">
+      <section>
+        <Image src={party} alt="A birthday treat at a pool party" {...card} />
+        <h2>Book a pool party</h2>
+        <p>Make a splash at your next celebration with the pool, the deck, and the grounds to yourselves.</p>
+        <p><a href="/parties/">Party times and prices</a></p>
+      </section>
+      <section>
+        <Image src={swimTeam} alt="A Wahoos swimmer doing breaststroke" {...card} />
+        <h2>Swim with the Wahoos</h2>
+        <p>The Wendwood Wahoos are small but mighty. We work hard, learn proper technique, cheer on our teammates, and have fun.</p>
+        <p><a href={pool.swimTeam}>Wahoos website</a></p>
+      </section>
+      <section>
+        <Image src={lessons} alt="A young swimmer with a kickboard" {...card} />
+        <h2>Learn to swim</h2>
+        <p>We hope to have a staff member offer lessons in {pool.season}. We'll share the details here when they're ready.</p>
       </section>
     </div>
   </div>
 
-  <section class="band">
+  <section class="association">
     <Image src={float} alt="" widths={[800, 1600, 2200]} sizes="100vw" />
     <div class="wrap">
-      <div class="band-box">
-        <h2>A shady oasis tucked in a quiet neighborhood</h2>
-        <p>Bring a book and relax on our pool deck.</p>
+      <div class="association-box">
+        <h2>Not here for the pool?</h2>
+        <p>The {pool.association} looks after the whole neighborhood. Help keep Wendwood beautiful and join Association events with an I Support Wendwood membership for ${p.supportWendwood}.</p>
+        <p><a class="button" href={pool.membershipSignup}>Support Wendwood</a></p>
       </div>
     </div>
   </section>

@@ -1,0 +1,16 @@
+---
+// The season's hours as a poolside sign. Used on the home and membership pages.
+import { pool } from '../data/pool';
+---
+<section class="hours-sign" aria-labelledby="hours-title">
+  <h2 id="hours-title">Pool hours, summer {pool.season}</h2>
+  <div class="hours-cols">
+    {pool.hours.map((col) => (
+      <div>
+        <h3>{col.label}</h3>
+        <ul>{col.lines.map((line) => <li>{line}</li>)}</ul>
+      </div>
+    ))}
+  </div>
+  <p class="hours-note">Hours can change for swim meets, events, and parties. We always aim to open as many hours as we can.</p>
+</section>

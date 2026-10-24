@@ -1,19 +1,21 @@
 ---
-import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
 import { pool, address } from '../data/pool';
 import entrance from '../assets/photos/contact-entrance.jpg';
 ---
-<PageLayout title="Contact" heading="Contact Us" header="bar" white description={`Contact Wendwood Pool in Newport News, VA, by email or Facebook, with directions to the pool at ${pool.addressLines[0]}`}>
-  <h2>We Want to Hear from You!</h2>
-  <div class="split contact-row">
-    <div>
-      <p><strong>Email:</strong> <a href={`mailto:${pool.email}`}>{pool.email}</a></p>
-      <p><strong>Facebook:</strong> <a href={pool.facebook}>facebook.com/wendwood.pool</a></p>
-      <p><strong>Address:</strong> <a href={pool.mapUrl}>{address}</a></p>
-      <p><strong>Pool phone:</strong> {pool.poolPhone} (emergency use only)</p>
-      <a class="button purple" href={`mailto:${pool.email}`}>Email us</a>
-    </div>
-    <Image src={entrance} alt="The pool entrance" loading="eager" widths={[400, 700]} sizes="(max-width: 640px) 100vw, 510px" />
-  </div>
+<PageLayout
+  title="Contact"
+  heading="Contact us"
+  description={`Contact Wendwood Pool in Newport News, VA, by email or Facebook, with directions to the pool at ${pool.addressLines[0]}`}
+  lead="We want to hear from you. Email is the best way to reach us."
+  photo={entrance}
+  photoAlt="The pool entrance"
+>
+  <dl class="fee-list contact-list">
+    <div><dt>Email</dt><dd><a href={`mailto:${pool.email}`}>{pool.email}</a></dd></div>
+    <div><dt>Facebook</dt><dd><a href={pool.facebook}>facebook.com/wendwood.pool</a></dd></div>
+    <div><dt>Address</dt><dd><a href={pool.mapUrl}>{address}</a></dd></div>
+    <div><dt>Pool phone</dt><dd>{pool.poolPhone}, for emergencies only</dd></div>
+  </dl>
+  <p><a class="button" href={`mailto:${pool.email}`}>Email us</a></p>
 </PageLayout>
