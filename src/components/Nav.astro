@@ -1,12 +1,28 @@
 ---
-import { nav } from '../data/pool';
+import { nav, pool } from '../data/pool';
 
 const current = Astro.url.pathname;
+const links = nav.filter((item) => item.href !== '/');
 ---
-<nav class="nav" aria-label="Main">
-  <ul>
-    {nav.map((item) => (
-      <li><a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a></li>
-    ))}
-  </ul>
-</nav>
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a class="brand" href="/" aria-current={current === '/' ? 'page' : undefined}>{pool.name}</a>
+    <nav class="nav" aria-label="Main">
+      <ul>
+        {links.map((item) => (
+          <li><a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <a class="button small header-join" href="/membership/">Join</a>
+    {/* Phones get a disclosure menu, so the page needs no JavaScript. */}
+    <details class="menu">
+      <summary>Menu</summary>
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href} aria-current={item.href === current ? 'page' : undefined}>{item.label}</a></li>
+        ))}
+      </ul>
+    </details>
+  </div>
+</header>

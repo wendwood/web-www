@@ -14,6 +14,8 @@ const photos = [
   { src: g5, alt: 'A baby in a pool float' },
 ];
 ---
-<div class="gallery">
-  {photos.map((p) => <Image src={p.src} alt={p.alt} widths={[400, 800]} sizes="(max-width: 640px) 50vw, 20vw" />)}
+<div class="wrap">
+  <div class="gallery">
+    {photos.map((p) => <Image src={p.src} alt={p.alt} widths={[400, 800]} sizes="(max-width: 760px) 50vw, 20vw" />)}
+  </div>
 </div>

@@ -41,7 +41,7 @@ VS Code with the official **Astro** extension highlights mistakes as you type.
 | Page layout (home, membership, parties…) | `src/pages/*.astro` |
 | Menu, footer | `src/components/Nav.astro`, `Footer.astro` |
 | Photos | `src/assets/photos/` (Astro resizes them) |
-| Colors, fonts, spacing | `src/styles/global.css` |
+| Colors, fonts, spacing | The tokens at the top of `src/styles/global.css` (every page follows them) |
 | PDFs | `public/files/YYYY/MM/`, linked as `/files/YYYY/MM/name.pdf`; list kept ones in `docs/inventory.md` |
 | Old-URL redirects | `public/_redirects` and `docs/url-map.csv` |
 

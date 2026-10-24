@@ -2,19 +2,26 @@
 import { pool } from '../data/pool';
 ---
 <footer class="site-footer">
-  <div class="footer-inner">
-    <a href={`mailto:${pool.email}`}>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2zm2 2v.5l8 5 8-5V7zm0 2.9V17h16V9.9l-8 5z"/></svg>
-      Email Us
-    </a>
-    <a href={pool.mapUrl}>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-      {pool.addressLines[0]}<br />{pool.addressLines[1]}
-    </a>
-    <a href={pool.facebook}>
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18h-6v-7h2.5l.5-3H15V9.5c0-.9.4-1.5 1.6-1.5H18V5.3A21 21 0 0 0 15.6 5C13.2 5 12 6.4 12 8.8V11H9.5v3H12v7H3z"/></svg>
-      Follow Us!
-    </a>
+  <div class="lane" aria-hidden="true"></div>
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <img src="/logo.png" alt="Wendwood Association" width="200" height="61" />
+      <p>{pool.name} is run by the {pool.association} for the neighborhood.</p>
+    </div>
+    <div>
+      <h2>Visit</h2>
+      <p><a href={pool.mapUrl}>{pool.addressLines[0]}<br />{pool.addressLines[1]}</a></p>
+    </div>
+    <div>
+      <h2>Get in touch</h2>
+      <p><a href={`mailto:${pool.email}`}>{pool.email}</a></p>
+      <p>Pool phone {pool.poolPhone}<br /><span class="muted">Emergencies only</span></p>
+    </div>
+    <div>
+      <h2>Follow</h2>
+      <p><a href={pool.facebook}>Facebook</a></p>
+      <p><a href={pool.swimTeam}>Wendwood Wahoos</a></p>
+    </div>
   </div>
-  <p class="wrap footer-links"><a href="/privacy/">Privacy</a> · <a href="/events/">Events</a> · <a href="/pool-rules/">Pool rules</a></p>
+  <p class="wrap footer-links"><a href="/pool-rules/">Pool rules</a><a href="/events/">Events</a><a href="/privacy/">Privacy</a></p>
 </footer>

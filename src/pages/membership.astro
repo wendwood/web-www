@@ -2,68 +2,78 @@
 import { Image } from 'astro:assets';
 import PageLayout from '../layouts/PageLayout.astro';
 import Gallery from '../components/Gallery.astro';
+import Hours from '../components/Hours.astro';
 import { pool } from '../data/pool';
 import basketball from '../assets/photos/membership-basketball.jpg';
 import drink from '../assets/photos/membership-drink.jpg';
 
 const p = pool.prices;
-const square = { widths: [400, 700], sizes: '(max-width: 640px) 100vw, 524px' };
 ---
-<PageLayout title="Membership" pre="at the" description={`${pool.season} Wendwood Pool memberships for households, singles, and seniors in Newport News, VA, with prices, volunteer discounts, and summer hours.`}>
-  <div class="split narrow-gap">
-    <p class="intro-lg">The Wendwood Pool has so much to offer our members. Free WiFi allows parents to telework as the kids splash and play while our American Red Cross certified lifeguards ensure their safety in the pool. Sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn! Littles can safely play in our completely fenced-in splash pool while parents supervise nearby.</p>
-    <Image src={basketball} alt="Pool basketball" {...square} loading="eager" />
-  </div>
-
-  <div class="split narrow-gap">
-    <Image src={drink} alt="A treat from the snack shack" {...square} />
-    <section class="panel p30">
-      <h2 class="label">{pool.season} Memberships</h2>
-      <h3 class="price-head">Household</h3>
-      <p class="price-line">+{pool.volunteerHours} volunteer hours: ${p.household.volunteer}</p>
-      <p class="price-line">no volunteer hours: ${p.household.noVolunteer}</p>
-      <h3 class="price-head">Single/Senior:</h3>
-      <p class="price-line">+{pool.volunteerHours} volunteer hours: ${p.single.volunteer}</p>
-      <p class="price-line">no volunteer hours: ${p.single.noVolunteer}</p>
-      <ul class="bullets">
-        <li>Includes use of the pool all season</li>
-        <li>participation in all Association-sponsored activities.</li>
-        <li>FREE wi-fi at the pool!</li>
-      </ul>
-      <p><a class="button pink" href="/pool-rules/">{pool.season} Pool Rules</a></p>
-      <p class="callout">New to the neighborhood since April 1, {pool.season - 1}??? Get ${p.newNeighborDiscount} off your membership fee!</p>
-      <a class="button pink" href={pool.membershipSignup}>Sign up today</a>
-    </section>
-  </div>
-
-  <section class="strip orange strip-row">
-    <div>
-      <h3>I Support Wendwood Membership</h3>
-      <p>Want to help keep Wendwood beautiful and participate in Association-sponsored events, but don’t need pool privileges? Support us for ${p.supportWendwood}.</p>
+<PageLayout
+  title="Membership"
+  description={`${pool.season} Wendwood Pool memberships for households, singles, and seniors in Newport News, VA, with prices, volunteer discounts, and summer hours.`}
+  lead="Sunbathe on our reclining chairs, read a book in the shade, or float on a giant unicorn. Littles play in the fenced splash pool while Red Cross certified lifeguards watch the big pool, and free Wi-Fi lets parents telework poolside."
+  photo={basketball}
+  photoAlt="Pool basketball"
+>
+  <section class="prices" aria-labelledby="prices-title">
+    <h2 id="prices-title">{pool.season} memberships</h2>
+    <p>Volunteer {pool.volunteerHours} hours during the season and your membership costs less.</p>
+    <div class="table-scroll">
+      <table class="price-table">
+        <thead>
+          <tr><th scope="col">Membership</th><th scope="col">With {pool.volunteerHours} volunteer hours</th><th scope="col">Without volunteer hours</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Household<span>{pool.eligibility.household}</span></th>
+            <td data-label={`With ${pool.volunteerHours} volunteer hours`}>${p.household.volunteer}</td>
+            <td data-label="Without volunteer hours">${p.household.noVolunteer}</td>
+          </tr>
+          <tr>
+            <th scope="row">Single or senior<span>{pool.eligibility.single}, {pool.season}</span></th>
+            <td data-label={`With ${pool.volunteerHours} volunteer hours`}>${p.single.volunteer}</td>
+            <td data-label="Without volunteer hours">${p.single.noVolunteer}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <a class="button white" href={pool.membershipSignup}>Join us today</a>
+    <ul class="checks">
+      <li>Use of the pool all season</li>
+      <li>{pool.guestPassesIncluded} guest passes</li>
+      <li>All Association-sponsored activities</li>
+      <li>Free Wi-Fi at the pool</li>
+    </ul>
+    <p class="callout">New to the neighborhood since April 1, {pool.season - 1}? Take ${p.newNeighborDiscount} off your membership.</p>
+    <p class="actions">
+      <a class="button" href={pool.membershipSignup}>Sign up online</a>
+      <a class="button alt" href="/pool-rules/">{pool.season} pool rules</a>
+    </p>
+    <p class="small">Paying by cash or check? Fill out the online form and choose “Check” as the payment option.</p>
   </section>
 
-  <section class="strip magenta">
-    <h3 class="center">Anticipated Summer {pool.season} Pool Hours</h3>
-    <div class="hours-cols">
-      {pool.hours.map((col) => (
-        <div>
-          <h3>{col.label}</h3>
-          {col.lines.map((line) => <p>{line}</p>)}
-        </div>
-      ))}
+  <section class="split support">
+    <Image src={drink} alt="A treat from the snack shack" widths={[400, 700, 1000]} sizes="(max-width: 760px) 100vw, 520px" />
+    <div class="support-box">
+      <h2>I Support Wendwood</h2>
+      <p class="price">${p.supportWendwood}</p>
+      <p>Don't need the pool? Help keep Wendwood beautiful with neighborhood landscaping projects, and join any Association-sponsored activity outside the pool.</p>
+      <p><a class="button" href={pool.membershipSignup}>Join the Association</a></p>
     </div>
-    <p class="footnote">*Please note that our hours celebrate the vibrancy of community life at Wendwood Pool, and these times are subject to change due to swim team events, event attendance, and scheduled parties. We will always aim to open as many hours as possible for our treasured members</p>
   </section>
 
-  <Fragment slot="full">
-    <section class="blue-band">
-      <div class="wrap">
-        <p>Want to pay with cash or check? Fill out the online form and then select “Check” for the Payment Option.</p>
-        <a class="button white-blue" href={pool.membershipSignup}>Online form - preferred</a>
-      </div>
-    </section>
-    <Gallery />
-  </Fragment>
+  <section class="extras" aria-labelledby="extras-title">
+    <h2 id="extras-title">Guests and add-ons</h2>
+    <dl class="fee-list">
+      <div><dt>Guest add-on</dt><dd>${p.guestAddOn} each</dd></div>
+      <div><dt>Guest passes</dt><dd>${p.guestPass} each, or ${p.guestPass12} for 12</dd></div>
+      <div><dt>Local guests</dt><dd>${p.localGuestDay} per guest per day</dd></div>
+      <div><dt>Guests from 50+ miles away</dt><dd>Free</dd></div>
+    </dl>
+    <p class="small">Every guest must come with a current member. <a href="/pool-rules/">How guests work</a></p>
+  </section>
+
+  <Hours />
+
+  <Gallery slot="full" />
 </PageLayout>
